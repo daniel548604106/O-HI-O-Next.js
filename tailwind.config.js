@@ -6,6 +6,8 @@ module.exports = {
       backgroundImage: (theme) => ({
         "application-bg-img":
           "url('https://images.unsplash.com/photo-1605513524006-063ed6ed31e7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njh8fGVjb21tZXJjZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')",
+        "about-bg-img":
+          "url('https://images.unsplash.com/photo-1579986736295-338a3a637862?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80')",
       }),
       colors: {
         "light-blue": "#178fac",
@@ -31,6 +33,7 @@ module.exports = {
         "500px": "500px",
       },
       padding: {
+        "5px": "5px",
         "10px": "10px",
         "15px": "15px",
         "20px": "20px",
@@ -87,12 +90,29 @@ module.exports = {
         "80vh": "80vh",
         "90vh": "90vh",
       },
+      minWidth: {
+        "10px": "10px",
+        "30px": "30px",
+        "40px": "40px",
+        "50px": "50px",
+        "60px": "60px",
+        "70px": "70px",
+        "100px": "100px",
+        "300px": "300px",
+        "730px": "730px",
+        "60vh": "60vh",
+        "70vh": "70vh",
+        "80vh": "80vh",
+        "90vh": "90vh",
+      },
       maxWidth: {
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",
         "60px": "60px",
         "70px": "70px",
+        "100px": "100px",
+        "200px": "200px",
         "300px": "300px",
         "730px": "730px",
         "60vh": "60vh",
@@ -107,6 +127,8 @@ module.exports = {
         auto: "100%",
       },
       margin: {
+        "10px": "10px",
+        "20px": "20px",
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",

@@ -17,7 +17,7 @@ let initialState = {
   loading: false,
   favoriteProducts: [],
   favoriteShops: [],
-  isMenuDrawerOpen: false,
+  isSideMenuOpen: false,
 };
 
 export const globalReducer = (state = initialState, action) => {
@@ -38,17 +38,17 @@ export const globalReducer = (state = initialState, action) => {
     case OPEN_SIDE_MENU:
       return {
         ...state,
-        isMenuDrawerOpen: true,
+        isSideMenuOpen: true,
       };
     case CLOSE_SIDE_MENU:
       return {
         ...state,
-        isMenuDrawerOpen: false,
+        isSideMenuOpen: false,
       };
     case TOGGLE_SIDE_MENU:
       return {
         ...state,
-        isMenuDrawerOpen: !state.isMenuDrawerOpen,
+        isSideMenuOpen: !state.isSideMenuOpen,
       };
     case ADD_TO_FAVORITE_FAILURE:
       return { ...state, loading: false, error: action.payload };
