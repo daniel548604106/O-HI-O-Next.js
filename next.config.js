@@ -1,4 +1,5 @@
 module.exports = {
+  images: { domains: ["photo.airspaceonline.com"] },
   env: {
     PUBLIC_URL: process.env.PUBLIC_URL,
     REACT_APP_FACEBOOK_URI: process.env.REACT_APP_FACEBOOK_URI,
