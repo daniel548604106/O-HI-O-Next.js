@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouter} from 'next/router'
+import {useSelector} from 'react-redux'
 const index = () => {
   const router = useRouter()
   const favoriteProducts = useSelector((state) => state.global.favoriteProducts);
