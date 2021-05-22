@@ -17,7 +17,7 @@ const index = () => {
   ];
   return (
     <div>
-      
+      favorite
     </div>
   )
 }
