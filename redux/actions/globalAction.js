@@ -7,12 +7,13 @@ import {
   GET_FAVORITE_LIST_REQUEST,
   GET_FAVORITE_LIST_SUCCESS,
   GET_FAVORITE_LIST_FAILURE,
-  OPEN_MENU_DRAWER,
-  CLOSE_MENU_DRAWER,
-} from '../types';
+  OPEN_SIDE_MENU,
+  TOGGLE_SIDE_MENU,
+  CLOSE_SIDE_MENU,
+} from "../types";
 
-import Cookie from 'js-cookie';
-import { apiAddToFavorite, apiGetFavList } from '../../api/index';
+import Cookie from "js-cookie";
+import { apiAddToFavorite, apiGetFavList } from "../../api/index";
 
 export const openLoginModal = () => {
   return { type: OPEN_LOGIN_MODAL };
@@ -25,14 +26,18 @@ export const setUserLoggedIn = () => {
   return { type: SET_USER_LOGIN };
 };
 
-export const openMenuDrawer = () => {
+export const toggleSideMenu = () => {
+  return { type: TOGGLE_SIDE_MENU };
+};
+
+export const openSideMenu = () => {
   return {
-    type: OPEN_MENU_DRAWER,
+    type: OPEN_SIDE_MENU,
   };
 };
-export const closeMenuDrawer = () => {
+export const closeSideMenu = () => {
   return {
-    type: CLOSE_MENU_DRAWER,
+    type: CLOSE_SIDE_MENU,
   };
 };
 
@@ -49,9 +54,9 @@ export const getFavList = (token) => async (dispatch) => {
 export const addToFavorite = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: ADD_TO_FAVORITE_REQUEST });
-    const token = Cookie.get('token');
+    const token = Cookie.get("token");
     await apiAddToFavorite(id, token, type);
-    notify('已更新收藏');
+    notify("已更新收藏");
     dispatch(getFavList(token));
   } catch (error) {
     dispatch({ type: ADD_TO_FAVORITE_FAILURE });

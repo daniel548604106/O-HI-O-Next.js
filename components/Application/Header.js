@@ -7,7 +7,7 @@ const Header = () => {
       <div className="flex items-center justify-between w-full max-w-6xl mx-auto px-20px py-15px">
         <div className="flex items-center">
           <Logo />
-          <h2 className="hidden sm:block">我要開 O.HI.O 館</h2>
+          <h2 className="hidden sm:block ml-3">我要開 O.HI.O 館</h2>
         </div>
         <div>
           <button className="bg-light-blue rounded-sm px-20px py-10px text-white">

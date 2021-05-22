@@ -74,7 +74,7 @@ const Application = () => {
             <a
               key={tab.name}
               onClick={() => handleClickNavItem(tab.ref, tab.title)}
-              className={`p-15px text-gray-800 ${
+              className={`cursor-pointer p-15px text-gray-800 ${
                 activeTab === tab.title && "border-b-4 border-light-blue"
               }`}
             >
@@ -85,7 +85,7 @@ const Application = () => {
       </div>
       <Hero />
       <section
-        className=""
+        className="flex flex-col max-w-5xl mx-auto px-10px py-50px text-center"
         id="advantage"
         ref={advantage}
         data-aos="fade-up"
@@ -94,6 +94,7 @@ const Application = () => {
         <Advantage />
       </section>
       <section
+        className="flex flex-col max-w-5xl mx-auto px-10px py-50px text-center"
         id="cooperation"
         ref={cooperation}
         data-aos="fade-up "
@@ -103,6 +104,7 @@ const Application = () => {
         <Cooperation />
       </section>
       <section
+        className="flex flex-col max-w-5xl mx-auto px-10px py-50px text-center"
         id="availableproducts"
         ref={available}
         data-aos="fade-up "
@@ -112,6 +114,7 @@ const Application = () => {
         <AvailableProducts />
       </section>
       <section
+        className="flex flex-col max-w-5xl mx-auto px-10px py-50px text-center"
         id="cta"
         ref={cta}
         data-aos="fade-up "
@@ -122,6 +125,7 @@ const Application = () => {
       </section>
       <section
         id="faq"
+        className="flex flex-col max-w-5xl mx-auto px-10px py-50px text-center"
         ref={faq}
         data-aos="fade-up "
         data-aos-easing="ease-out-cubic"
