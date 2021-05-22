@@ -5,6 +5,8 @@ import { setUserLoggedIn } from "../../redux/actions/userAction";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
+import SocialLogin from "../../components/Global/SocialLogin";
 const Login = ({ setLoginState }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -17,49 +19,64 @@ const Login = ({ setLoginState }) => {
       Cookie.set("token", data.token);
       dispatch(closeLoginModal());
       dispatch(setUserLoggedIn(data));
-
-      notify("登入成功！");
     } catch (error) {
-      notify("登入失敗！請重新再登入一次");
+      console.log("失敗");
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center h-90vh py-20px text-center max-w-1200px mx-auto">
-      <h2 className="text-xl mb-20px">用 O-HI-O 帳號登入</h2>
-      <div className="mb-10px">
-        <label htmlFor="account">帳號</label>
+    <div className="px-15px w-full max-w-760px flex flex-col items-center justify-center min-h-60vh sm:py-50px  py-20px text-center  mx-auto">
+      <div className="mb-20px sm:mb-30px">
+        <Image src={"/images/O.HI.O-footer.svg"} width={200} height={100} />
+      </div>
+
+      <h2 className="text-xl sm:text-3xl mb-20px sm:mb-50px">帳號登入</h2>
+      <div className="mb-10px  sm:flex-col text-left  w-full flex items-center sm:items-start">
+        <label
+          htmlFor="account"
+          className="whitespace-nowrap text-md sm:text-lg mr-10px sm:mb-10px"
+        >
+          帳號
+        </label>
         <input
           placeholder="Email"
-          className=" ml-10px bg-gray-100 rounded-sm px-10px py-5px"
+          className="w-full border  rounded-md px-10px py-10px"
           onChange={(e) => setAccount(e.target.value)}
           type="email"
         />
       </div>
-      <div className="mb-10px">
-        <label htmlFor="password">密碼</label>
+      <div className="mb-10px sm:flex-col w-full flex text-left items-center sm:items-start">
+        <label
+          htmlFor="password"
+          className="whitespace-nowrap mr-10px sm:mb-10px"
+        >
+          密碼
+        </label>
         <input
           placeholder="Password"
-          className="ml-10px bg-gray-100 rounded-sm px-10px py-5px"
+          className=" w-full  border  rounded-md px-10px py-10px "
           onChange={(e) => setPassword(e.target.value)}
           type="password"
         />
       </div>
+
       <button
         className="text-main-pink my-10px"
         onClick={() => router.push("forgetpassword")}
       >
         忘記密碼
       </button>
-      <div
-        className="w-200px my-10px  px-10px py-10px border rounded"
+      <button
+        className=" w-full my-10px  px-10px py-10px border rounded"
         onClick={() => handleLogin()}
       >
         登入
-      </div>
+      </button>
+      <p className="my-20px text-sm sm:text-lg">或用以下帳號繼續</p>
+      <SocialLogin />
       <p className="my-10px text-sm">
         還不是會員嗎？{" "}
         <strong
-          className="underline text-main-pink"
+          className="cursor-pointer underline text-main-pink"
           onClick={() => router.push("signup")}
         >
           立刻註冊帳號
