@@ -100,7 +100,7 @@ const SideMenu = () => {
           Categories
         </h2>
         {categories.map((category, idx) => (
-          <div key={category.category}>
+          <div key={category.categoryId}>
             <div
               onClick={() => setActiveCategory(idx)}
               className=" py-10px text-sm px-10px flex items-center border-b justify-between w-full "

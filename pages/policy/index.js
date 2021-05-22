@@ -40,7 +40,7 @@ const Policy = () => {
   ];
   return (
     <>
-      <div className="border-b max-w-screen-lg mx-auto	">
+      <div className=" border-b max-w-screen-lg mx-auto	">
         <div className="flex overflow-auto whitespace-nowrap  items-center justify-between">
           {tabs.map((tab, idx) => (
             <a
@@ -56,7 +56,7 @@ const Policy = () => {
           ))}
         </div>
 
-        <div className="mt-50px">
+        <div className="mt-50px px-15px">
           {router.query.type === "privacy" && (
             <section>
               <Privacy />

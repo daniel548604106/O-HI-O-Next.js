@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
+import { addToFavorite } from "../../api/favoriteRequest";
 const Header = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -26,7 +27,12 @@ const Header = () => {
             className="min-w-10px text-gray-700 cursor-pointer inline-block sm:hidden h-5 mr-5"
           />
           <div onClick={() => router.push("/")} className="min-w-100px">
-            <Image src="/images/O.HI.O-logo.svg" width={100} height={50} />
+            <Image
+              className="cursor-pointer"
+              src="/images/O.HI.O-logo.svg"
+              width={100}
+              height={50}
+            />
           </div>
           {/* <span className="ml-10px sm:ml-20px relative ">
             <input
@@ -50,10 +56,16 @@ const Header = () => {
               </Link>
             </li>
             <li className="px-2 cursor-pointer ">
-              <HeartIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
+              <HeartIcon
+                onClick={() => router.push("favorite")}
+                className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
+              />
             </li>
             <li className="px-2 cursor-pointer ">
-              <UserIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
+              <UserIcon
+                onClick={() => router.push("login")}
+                className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
+              />
             </li>
             <li className="px-2 cursor-pointer " onClick={() => toCart()}>
               <ShoppingBagIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
