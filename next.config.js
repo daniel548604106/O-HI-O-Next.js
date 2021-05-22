@@ -12,6 +12,7 @@ module.exports={
     REACT_APP_LINE_SECRET: process.env.REACT_APP_LINE_SECRET,
     MONGO_URI: process.env.MONGO_URI,
     JWT_SECRET: process.env.JWT_SECRET
-  },
-  distDir: 'dist',
+  },   
+   // Target must be serverless
+  target: "serverless",
 }
