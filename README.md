@@ -32,10 +32,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Deploy on Netlify
 
 
-//package.json
+-Package.json
+
 "build: "next build"
 "export":"next export"
 
-//Netlify
+-Netlify
 
 npm run build && npm run export 
