@@ -1,8 +1,8 @@
-import { SET_USER_LOGIN, SET_USER_LOGOUT } from '../types';
+import { SET_USER_LOGIN, SET_USER_LOGOUT } from "../types";
 
 const initialState = {
   currentUser: null,
-  isUserLoggedIn: false,
+  isUserLoggedIn: true,
 };
 
 const userReducer = (state = initialState, action) => {
