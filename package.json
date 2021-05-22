@@ -9,10 +9,17 @@
     "export": "next export"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.1",
     "@reduxjs/toolkit": "^1.5.1",
+    "@svgr/webpack": "^5.5.0",
+    "aos": "^2.3.4",
     "axios": "^0.21.1",
     "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.10",
     "next": "10.2.2",
+    "nodemailer": "^6.6.0",
+    "query-string": "^7.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.4",
