@@ -47,7 +47,7 @@ const ProductCard = ({ products, title }) => {
         {products.map((product) => (
           <div
             key={product._id}
-            className="mr-10px min-w-150px sm:min-w-200px "
+            className="mr-10px w-150px min-w-150px sm:min-w-200px "
           >
             <div className="relative cursor-pointer w-full">
               <div className="absolute top-0 flex items-center left-0 z-10 text-white uppercase">
@@ -65,7 +65,7 @@ const ProductCard = ({ products, title }) => {
                 >
                   <div className="relative">
                     <Image
-                      className="min-h-150px min-w-150px sm:min-w-200px sm:min-h-200px"
+                      className="min-h-150px w-150px sm:min-w-200px sm:min-h-200px"
                       width={200}
                       height={200}
                       src={product.images[0]}

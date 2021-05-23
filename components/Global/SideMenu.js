@@ -24,10 +24,17 @@ const SideMenu = () => {
   const [user, setUser] = useState({});
   const isSideMenuOpen = useSelector((state) => state.global.isSideMenuOpen);
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
-
+  const toLogin = () => {
+    router.push("/login");
+    dispatch(toggleSideMenu());
+  };
   const browseCategory = (categoryId, subCategoryId) => {
     router.push(`browse?category=${categoryId}&subcategory=${subCategoryId}`);
     dispatch(toggleSideMenu());
+  };
+
+  const switchActiveCategory = (idx) => {
+    idx === activeCategory ? setActiveCategory(-1) : setActiveCategory(idx);
   };
 
   const helpOptions = [
@@ -45,14 +52,12 @@ const SideMenu = () => {
       name: "About Us",
       route: "/about",
     },
-    {
-      name: "Careers",
-      route: "/careers",
-    },
   ];
 
   const logOut = () => {
+    dispatch(toggleSideMenu());
     dispatch(setUserLogout());
+    router.push("/");
   };
   const CtaBtn = () => (
     <div
@@ -62,7 +67,10 @@ const SideMenu = () => {
        }`}
     >
       {isUserLoggedIn ? (
-        <div className=" py-10px flex items-center justify-around">
+        <div
+          onClick={() => dispatch(toggleSideMenu())}
+          className=" py-10px flex items-center justify-around"
+        >
           <Link href={"/my/email"}>
             <div className="flex flex-col items-center">
               <InboxIcon className="h-5" />
@@ -75,7 +83,7 @@ const SideMenu = () => {
               <p className="text-sm">通知中心</p>
             </div>
           </Link>
-          <Link href={"/my/purchase/unpaid"}>
+          <Link href={"/my/purchase?status=unpaid"}>
             <div className="flex flex-col items-center">
               <ClipboardIcon className="h-5" />
               <p className="text-sm">購買訂單</p>
@@ -92,7 +100,14 @@ const SideMenu = () => {
           </Link>
         </div>
       ) : (
-        <div className="w-full text-center py-10px ">登入 / 註冊</div>
+        <div className="w-full text-center px-10px py-10px  ">
+          <button
+            onClick={() => toLogin()}
+            className="border text-main-pink border-main-pink rounded w-full py-10px"
+          >
+            登入 / 註冊
+          </button>
+        </div>
       )}
 
       <div>
@@ -102,7 +117,7 @@ const SideMenu = () => {
         {categories.map((category, idx) => (
           <div key={category.categoryId}>
             <div
-              onClick={() => setActiveCategory(idx)}
+              onClick={() => switchActiveCategory(idx)}
               className=" py-10px text-sm px-10px flex items-center border-b justify-between w-full "
             >
               <span>{category.title}</span>
@@ -149,25 +164,29 @@ const SideMenu = () => {
         About O.HI.O
       </h2>
       {aboutOptions.map((option) => (
-        <div key={option.name} className="text-sm px-10px py-10px">
+        <div
+          onClick={() => dispatch(toggleSideMenu())}
+          key={option.name}
+          className="text-sm px-10px py-10px"
+        >
           <Link href={option.route}>{option.name}</Link>
         </div>
       ))}
-      <Link
-        target="_blank"
-        rel="noopener noreferrer"
-        href="/application"
-        className="bg-cover bg-application-bg-img"
-      >
-        <div className="flex items-center justify-between">
-          <span> 我想在 O.HI.O 上開店</span>
-          <ChevronRightIcon className="h-5" />
-        </div>
-      </Link>
+      <div className="py-10px px-10px mb-50px">
+        <a href="/application" target="_blank" rel="noopener noreferrer">
+          <div className="flex items-center bg-cover bg-application-bg-img py-10px px-10px text-white rounded-sm justify-between">
+            <span> 我想在 O.HI.O 上開店</span>
+            <ChevronRightIcon className="h-5" />
+          </div>
+        </a>
+      </div>
       {/* <LanguageIcon style={{ width: "16px" }} /> */}
       {/* <p onClick={() => changeLanguage()}>{language}</p> */}
       {isUserLoggedIn && (
-        <div className=" mt-10px mb-20px mx-10px text-center py-10px rounded  border-2">
+        <div
+          onClick={() => logOut()}
+          className=" mt-10px mb-20px mx-10px text-center py-10px rounded  border-2"
+        >
           <Link className="" href="/" onClick={() => logOut()}>
             登出
           </Link>
