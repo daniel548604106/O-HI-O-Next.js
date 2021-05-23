@@ -3,6 +3,7 @@ import store from "../redux/store";
 import { Provider } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import "swiper/swiper.scss";
 import Header from "../components/Global/Header";
 import SideMenu from "../components/Global/SideMenu";
 function MyApp({ Component, pageProps }) {

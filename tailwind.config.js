@@ -27,6 +27,7 @@ module.exports = {
         "60px": "60px",
         "70px": "70px",
         "100px": "100px",
+        "150px": "150px",
         "200px": "200px",
         "220px": "220px",
         "250px": "250px",
@@ -48,6 +49,7 @@ module.exports = {
         "100px": "100px",
       },
       margin: {
+        "10px": "10px",
         "20px": "20px",
         "30px": "30px",
         "40px": "40px",
@@ -69,7 +71,11 @@ module.exports = {
         "50px": "50px",
         "60px": "60px",
         "70px": "70px",
+        "80px": "80px",
+        "90px": "90px",
         "100px": "100px",
+        "150px": "150px",
+        "170px": "170px",
         "200px": "200px",
         "300px": "300px",
         "730px": "730px",
@@ -99,6 +105,8 @@ module.exports = {
         "60px": "60px",
         "70px": "70px",
         "100px": "100px",
+        "150px": "150px",
+        "200px": "200px",
         "300px": "300px",
         "730px": "730px",
         "60vh": "60vh",
@@ -152,6 +160,7 @@ module.exports = {
         "90px": "90px",
         "100px": "100px",
       },
+
       minWidth: {
         "30px": "30px",
         "40px": "40px",
@@ -177,5 +186,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    // ...
+  ],
 };

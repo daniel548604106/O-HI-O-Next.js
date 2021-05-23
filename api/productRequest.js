@@ -1,10 +1,10 @@
-import axios from '../lib/axiosConfig';
+import axios from "../lib/axiosConfig";
 
 export const getAllProducts = (query) => {
   return axios.get(`/products?${query}`);
 };
 export const getDiscountedProducts = () => {
-  return axios.get('/products/discount');
+  return axios.get("/products/discount");
 };
 export const getProduct = (id) => {
   return axios.get(`/products/product/${id}`);
