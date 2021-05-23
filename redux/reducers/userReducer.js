@@ -2,7 +2,7 @@ import { SET_USER_LOGIN, SET_USER_LOGOUT } from "../types";
 
 const initialState = {
   currentUser: null,
-  isUserLoggedIn: true,
+  isUserLoggedIn: false,
 };
 
 const userReducer = (state = initialState, action) => {

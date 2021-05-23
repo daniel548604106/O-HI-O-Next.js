@@ -9,7 +9,7 @@ import {
   SearchIcon,
   HeartIcon,
 } from "@heroicons/react/outline";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { addToFavorite } from "../../api/favoriteRequest";
 const Header = () => {
@@ -18,6 +18,8 @@ const Header = () => {
   const toCart = () => {
     router.push("/cart");
   };
+  const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
+  const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <header className="border-b py-10px px-15px">
       <div className=" max-w-6xl mx-auto flex items-center justify-between">
@@ -62,10 +64,19 @@ const Header = () => {
               />
             </li>
             <li className="px-2 cursor-pointer ">
-              <UserIcon
-                onClick={() => router.push("login")}
-                className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
-              />
+              {isUserLoggedIn ? (
+                <img
+                  onClick={() => router.push("/my")}
+                  src={currentUser.picture}
+                  className="w-30px h-30px sm:w-40px sm:h-40px rounded-full"
+                />
+              ) : (
+                // <div>{currentUser.name}</div>
+                <UserIcon
+                  onClick={() => router.push("login")}
+                  className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
+                />
+              )}
             </li>
             <li className="px-2 cursor-pointer " onClick={() => toCart()}>
               <ShoppingBagIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />

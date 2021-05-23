@@ -1,7 +1,7 @@
 import axios from "../lib/axiosConfig";
 
-export const getAllProducts = (query) => {
-  return axios.get(`/products?${query}`);
+export const getAllProducts = () => {
+  return axios.get(`/products`);
 };
 export const getDiscountedProducts = () => {
   return axios.get("/products/discount");

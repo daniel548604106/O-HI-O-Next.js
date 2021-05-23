@@ -45,7 +45,10 @@ const ProductCard = ({ products, title }) => {
       </h1>
       <div className="flex items-center scrollbar-hide overflow-scroll whitespace-nowrap">
         {products.map((product) => (
-          <div className="mr-10px min-w-150px sm:min-w-200px ">
+          <div
+            key={product._id}
+            className="mr-10px min-w-150px sm:min-w-200px "
+          >
             <div className="relative cursor-pointer w-full">
               <div className="absolute top-0 flex items-center left-0 z-10 text-white uppercase">
                 <p className="bg-light-blue px-10px py-5px text-sm">新品</p>
@@ -58,7 +61,6 @@ const ProductCard = ({ products, title }) => {
               {product ? (
                 <div
                   className=" relative hover:opacity-70"
-                  key={product.id}
                   onClick={() => directToProduct(product._id)}
                 >
                   <div className="relative">
