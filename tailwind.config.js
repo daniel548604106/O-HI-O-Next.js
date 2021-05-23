@@ -90,6 +90,8 @@ module.exports = {
         "50px": "50px",
         "60px": "60px",
         "70px": "70px",
+        "150px": "150px",
+        "200px": "200px",
         "300px": "300px",
         "730px": "730px",
         "60vh": "60vh",
@@ -121,6 +123,8 @@ module.exports = {
         "60px": "60px",
         "70px": "70px",
         "100px": "100px",
+        "150px": "150px",
+        "170px": "170px",
         "200px": "200px",
         "300px": "300px",
         "500px": "500px",
@@ -188,6 +192,9 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar-hide"),
+    // ...
+
     // ...
   ],
 };

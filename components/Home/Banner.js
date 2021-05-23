@@ -7,13 +7,9 @@ const Banner = ({ banners }) => {
   return (
     <div
       onClick={() => router.push(`/events/${banners.id}`)}
-      className="w-screen cursor-pointer"
+      className="w-full cursor-pointer"
     >
-      <Swiper
-        className="w-screen"
-        slidesPerView={1}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper slidesPerView={1}>
         {banners.map((banner) => (
           <div className="w-screen" key={banner.image}>
             <SwiperSlide>

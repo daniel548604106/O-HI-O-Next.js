@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import Head from "next/head";
 import Banner from "../components/Home/Banner";
-import { apiGetBanners, apiGetRecommendedProducts } from "../api/index";
+import {
+  apiGetBanners,
+  apiGetDiscountedProducts,
+  apiGetRecommendedProducts,
+} from "../api/index";
 import ProductCard from "../components/Global/ProductCard";
-export default function Home({ banners, recommendedProducts }) {
-  useEffect(() => {
-    console.log(banners);
-  }, []);
+export default function Home({
+  banners,
+  recommendedProducts,
+  discountedProducts,
+}) {
   return (
     <div>
       <Head>
@@ -16,10 +21,16 @@ export default function Home({ banners, recommendedProducts }) {
       </Head>
       <Banner banners={banners.banners} />
       <main className="py-20px sm:py-50px max-w-1200px w-full mx-auto">
-        <section className="px-15px">
+        <section className="px-15px mb-20px sm:mb-50px">
           <ProductCard
             title={"推薦商品"}
             products={recommendedProducts.products}
+          />
+        </section>
+        <section className="px-15px mb-20px sm:mb-50px">
+          <ProductCard
+            title={"限時優惠"}
+            products={discountedProducts.products}
           />
         </section>
       </main>
@@ -32,11 +43,15 @@ export async function getServerSideProps() {
   const recommendedProducts = JSON.parse(
     JSON.stringify((await apiGetRecommendedProducts()).data)
   );
+  const discountedProducts = JSON.parse(
+    JSON.stringify((await apiGetDiscountedProducts()).data)
+  );
   const banners = JSON.parse(JSON.stringify(res.data));
   return {
     props: {
       banners,
       recommendedProducts,
+      discountedProducts,
     },
   };
 }

@@ -1,9 +1,9 @@
 import "../styles/globals.css";
+import "swiper/swiper.scss";
 import store from "../redux/store";
 import { Provider } from "react-redux";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import "swiper/swiper.scss";
+import Footer from "../components/Global/Footer";
 import Header from "../components/Global/Header";
 import SideMenu from "../components/Global/SideMenu";
 function MyApp({ Component, pageProps }) {
@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
       </div>
       <SideMenu />
       <Component {...pageProps} />;
+      <Footer />
     </Provider>
   );
 }

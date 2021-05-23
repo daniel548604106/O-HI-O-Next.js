@@ -1,5 +1,21 @@
 module.exports = {
-  images: { domains: ["photo.airspaceonline.com"] },
+  images: {
+    domains: [
+      "photo.airspaceonline.com",
+      "upload.cc",
+      "farm1.staticflickr.com",
+      "c1.staticflickr.com",
+      "live.staticflickr.com",
+      "i.redd.it",
+      "64.media.tumblr.com",
+      "img.alicdn.com",
+      "muku-store.com",
+      "cdn03.pinkoi.com",
+      "64.media.tumblr.com",
+      "craftbagth.com",
+      "*",
+    ],
+  },
   env: {
     PUBLIC_URL: process.env.PUBLIC_URL,
     REACT_APP_FACEBOOK_URI: process.env.REACT_APP_FACEBOOK_URI,

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { addToFavorite } from "../../redux/actions/globalAction";
 import { HeartIcon } from "@heroicons/react/outline";
 import { discount } from "../../lib/tool";
+import Image from "next/image";
 const ProductCard = ({ products, title }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -42,9 +43,9 @@ const ProductCard = ({ products, title }) => {
       <h1 className="font-semibold mb-10px sm:mb-20px text-lg sm:text-2xl">
         {title}
       </h1>
-      <div className="flex items-center overflow-scroll whitespace-nowrap">
+      <div className="flex items-center scrollbar-hide overflow-scroll whitespace-nowrap">
         {products.map((product) => (
-          <div className="mr-10px w-150px sm:w-200px ">
+          <div className="mr-10px min-w-150px sm:min-w-200px ">
             <div className="relative cursor-pointer w-full">
               <div className="absolute top-0 flex items-center left-0 z-10 text-white uppercase">
                 <p className="bg-light-blue px-10px py-5px text-sm">新品</p>
@@ -61,15 +62,16 @@ const ProductCard = ({ products, title }) => {
                   onClick={() => directToProduct(product._id)}
                 >
                   <div className="relative">
-                    <img
-                      className="h-150px sm:h-200px sm:170px w-full"
-                      loading="lazy"
+                    <Image
+                      className="min-h-150px min-w-150px sm:min-w-200px sm:min-h-200px"
+                      width={200}
+                      height={200}
                       src={product.images[0]}
                       alt={product.name}
                     />
                     <HeartIcon
                       onClick={(e) => addItemToFavorite(e, product._id)}
-                      className={`h-5 absolute bottom-10px cursor-pointer right-10px hover:text-white ${
+                      className={`text-white h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-main-pink ${
                         addedFavorite > -1 && "bg-main-pink"
                       }`}
                     />
