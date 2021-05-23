@@ -6,14 +6,16 @@
 
 (https://tailwindcss.com/docs/guides/nextjs)
 
-<<<<<<< HEAD
+
 ## Swiper
 
 (https://swiperjs.com/react)
 =======
 
 
->>>>>>> master
+## MONGODB
+(https://github.com/vercel/next.js/blob/canary/examples/with-mongodb/util/mongodb.js)
+
 
 ## Learn More
 
