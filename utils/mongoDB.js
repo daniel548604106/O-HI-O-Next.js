@@ -18,4 +18,6 @@ async function dbConnect() {
   });
 }
 
+mongoose.disconnect();
+
 export default dbConnect;
