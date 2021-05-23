@@ -17,6 +17,7 @@ export default async function (req, res) {
           } catch (error) {
             console.log("error", error);
           }
+          break;
         case "discount":
           try {
             const products = await Product.find({
@@ -27,6 +28,7 @@ export default async function (req, res) {
           } catch (error) {
             console.log("error", error);
           }
+          break;
       }
   }
 }
