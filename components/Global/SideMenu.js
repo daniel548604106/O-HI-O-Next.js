@@ -2,17 +2,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 // import { useTranslation } from "react-i18next";
-import {
-  UserIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-  InboxIcon,
-  BellIcon,
-  ClipboardIcon,
-} from "@heroicons/react/outline";
+import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { categories } from "../../lib/tool";
+import SideMenuUserTab from "./SideMenuUserTab";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { setUserLogout } from "../../redux/actions/userAction";
 const SideMenu = () => {
@@ -67,37 +61,8 @@ const SideMenu = () => {
        }`}
     >
       {isUserLoggedIn ? (
-        <div
-          onClick={() => dispatch(toggleSideMenu())}
-          className=" py-10px flex items-center justify-around"
-        >
-          <Link href={"/my/email"}>
-            <div className="flex flex-col items-center">
-              <InboxIcon className="h-5" />
-              <p className="text-sm">我的信箱</p>
-            </div>
-          </Link>
-          <Link href={"/my/notification"}>
-            <div className="flex flex-col items-center">
-              <BellIcon className="h-5" />
-              <p className="text-sm">通知中心</p>
-            </div>
-          </Link>
-          <Link href={"/my/purchase?status=unpaid"}>
-            <div className="flex flex-col items-center">
-              <ClipboardIcon className="h-5" />
-              <p className="text-sm">購買訂單</p>
-            </div>
-          </Link>
-          <Link href={"/my/setting"}>
-            {user.picture ? (
-              <img src={user.picture} alt="" />
-            ) : (
-              <div className="p-10px ">
-                <UserIcon className="h-5" />
-              </div>
-            )}
-          </Link>
+        <div onClick={() => dispatch(toggleSideMenu())} className=" ">
+          <SideMenuUserTab />
         </div>
       ) : (
         <div className="w-full text-center px-10px py-10px  ">
