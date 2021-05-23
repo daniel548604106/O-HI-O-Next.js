@@ -10,7 +10,6 @@
 ## Swiper
 
 (https://swiperjs.com/react)
-=======
 
 
 ## MONGODB
