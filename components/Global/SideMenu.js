@@ -55,10 +55,8 @@ const SideMenu = () => {
   };
   const CtaBtn = () => (
     <div
-      className={`overflow-y-auto max-h-screen  w-full overflow-hidden transition-all duration-100
-       transform  max-w-0 h-screen border border-r bg-white  ${
-         isSideMenuOpen && "max-w-300px"
-       }`}
+      className={`${isSideMenuOpen && "transform-none"} -translate-x-full overflow-y-auto max-w-300px  max-h-screen  w-full overflow-hidden transition-all duration-100
+       transform h-screen border border-r bg-white  }
     >
       {isUserLoggedIn ? (
         <div onClick={() => dispatch(toggleSideMenu())} className=" ">
