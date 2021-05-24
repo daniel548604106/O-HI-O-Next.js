@@ -169,7 +169,7 @@ const SideMenu = () => {
         onClick={(e) => dispatch(toggleSideMenu())}
       >
         <div onClick={(e) => e.stopPropagation()}
-      > >
+       >
           <CtaBtn />
         </div>
       </div>
