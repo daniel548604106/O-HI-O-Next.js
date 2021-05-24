@@ -7,7 +7,7 @@ import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { categories } from "../../lib/tool";
 import SideMenuUserTab from "./SideMenuUserTab";
-import Overlay from "./Overlay"
+import Overlay from "./Overlay";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { setUserLogout } from "../../redux/actions/userAction";
 const SideMenu = () => {
