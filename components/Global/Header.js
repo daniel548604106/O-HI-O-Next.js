@@ -34,6 +34,9 @@ const Header = () => {
               src="/images/O.HI.O-logo.svg"
               width={100}
               height={50}
+priority={true}
+
+
             />
           </div>
           {/* <span className="ml-10px sm:ml-20px relative ">
