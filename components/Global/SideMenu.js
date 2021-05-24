@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { categories } from "../../lib/tool";
 import SideMenuUserTab from "./SideMenuUserTab";
+import Overlay from "./Overlay"
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { setUserLogout } from "../../redux/actions/userAction";
 const SideMenu = () => {
@@ -55,7 +56,7 @@ const SideMenu = () => {
   };
   const CtaBtn = () => (
     <div
-      className={`${isSideMenuOpen && "translate-x-full"} -left-full overflow-y-auto max-w-300px  max-h-screen  w-full overflow-hidden transition-all duration-100
+      className={`${isSideMenuOpen && "translate-x-full"} absolute z-50 top-0 left-0  -left-full overflow-y-auto max-w-300px  max-h-screen  w-full overflow-hidden transition-all duration-200
        transform h-screen border border-r bg-white ` }
     >
       {isUserLoggedIn ? (
@@ -160,7 +161,7 @@ const SideMenu = () => {
 
   return (
     <>
-      
+     
         <div onClick={(e) => e.stopPropagation()}
        >
           <CtaBtn />
