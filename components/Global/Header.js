@@ -21,7 +21,7 @@ const Header = () => {
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const currentUser = useSelector((state) => state.user.currentUser);
   return (
-    <header className="border-b py-10px px-15px">
+    <header className="border-b py-10px px-15px max-h-60px">
       <div className=" max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <MenuAlt2Icon
@@ -33,7 +33,7 @@ const Header = () => {
               className="cursor-pointer"
               src="/images/O.HI.O-logo.svg"
               width={100}
-              height={50}
+              height={40}
 priority={true}
 
 
