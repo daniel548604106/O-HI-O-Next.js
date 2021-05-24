@@ -56,7 +56,7 @@ const SideMenu = () => {
   };
   const CtaBtn = () => (
     <div
-      className={`${isSideMenuOpen && "translate-x-full"} fixed z-50 top-0 left-0  ease-in-out overflow-y-auto delay-150 w-300px transition-all duration-200
+      className={`${isSideMenuOpen && "left-0"} fixed z-50 top-0 -left-full  ease-in-out overflow-y-auto delay-150 w-300px transition-position duration-200
        transform h-screen border border-r bg-white ` }
     >
       {isUserLoggedIn ? (
