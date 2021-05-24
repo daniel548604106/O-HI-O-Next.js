@@ -161,9 +161,9 @@ const SideMenu = () => {
   return (
     <>
       <div
-        className={`transition-all duration-300 ease-in-out  fixed z-50 top-0 left-0 w-screen h-screen bg-gray-600  bg-opacity-0 ${
+        className={` transition-all duration-300 ease-in-out  fixed z-50 top-0 left-0 w-screen h-screen bg-gray-600  bg-opacity-0 ${
           isSideMenuOpen && "bg-opacity-50"
-        } ${!isSideMenuOpen && "hidden"}`}
+        } `}
         onClick={(e) => dispatch(toggleSideMenu())}
       >
         <div onClick={(e) => e.stopPropagation()}
