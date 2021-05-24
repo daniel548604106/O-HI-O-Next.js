@@ -20,6 +20,25 @@ module.exports = {
         50: "50",
         100: "100",
       },
+
+transitionProperty: {
+      none: 'none',
+      all: 'all',
+      default: 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
+      colors: 'background-color, border-color, color, fill, stroke',
+      opacity: 'opacity',
+      shadow: 'box-shadow',
+      transform: 'transform',
+      width: 'width',
+      height: 'height',
+      'opacity-height': 'opacity, height',
+      'max-width': 'max-width',
+      'max-height': 'max-height',
+      position: 'top, left, right, bottom',
+      pm: 'padding, margin, opacity, background-color, color',
+      positionColor: 'background-color, border-color, color, fill, stroke opacity top, left, right, bottom'
+    },
+
       width: {
         "30px": "30px",
         "40px": "40px",
