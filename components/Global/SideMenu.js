@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 // import { useTranslation } from "react-i18next";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/outline";
-import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { categories } from "../../lib/tool";
 import SideMenuUserTab from "./SideMenuUserTab";
 import Overlay from "./Overlay";
+import { isSideMenuOpen } from "../../redux/reducers/globalReducer";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { setUserLogout } from "../../redux/actions/userAction";
 const SideMenu = () => {
@@ -56,7 +56,9 @@ const SideMenu = () => {
   };
   const CtaBtn = () => (
     <div
-      className={`${isSideMenuOpen && " -translate-x-full"} fixed z-50 top-60px  left-0 overflow-y-auto delay-150 w-full transition-transform duration-500 ease-in-out  transform h-screen border border-r bg-white ` }
+      className={`${
+        !isSideMenuOpen && " -translate-x-full"
+      } fixed z-50 top-0 max-w-300px  left-0 overflow-y-auto delay-150 w-full transition-transform duration-500 ease-in-out  transform h-screen border border-r bg-white `}
     >
       {isUserLoggedIn ? (
         <div onClick={() => dispatch(toggleSideMenu())} className=" ">
@@ -159,14 +161,15 @@ const SideMenu = () => {
   );
 
   return (
-    <>
-     
-        <div onClick={(e) => e.stopPropagation()}
-       >
-          <CtaBtn />
-        </div>
-    
-    </>
+    isSideMenuOpen && (
+      <div onClick={() => dispatch(toggleSideMenu())}>
+        <Overlay>
+          <div onClick={(e) => e.stopPropagation()}>
+            <CtaBtn />
+          </div>
+        </Overlay>
+      </div>
+    )
   );
 };
 
