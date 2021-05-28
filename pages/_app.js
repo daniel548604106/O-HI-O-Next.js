@@ -12,9 +12,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <title>O.HI.O</title>
-      </Head>
       <Provider store={store}>
         <div className={`${router.pathname === "/application" && "hidden"}`}>
           <Header />
