@@ -43,6 +43,8 @@ const shopSchema = new mongoose.Schema(
   }
 );
 
+mongoose.models = {};
+
 shopSchema.virtual("products", {
   ref: "Product",
   localField: "_id",

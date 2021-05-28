@@ -21,32 +21,33 @@ const Header = () => {
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const currentUser = useSelector((state) => state.user.currentUser);
   return (
-    <header className="border-b py-10px px-15px max-h-60px">
-      <div className=" max-w-6xl mx-auto flex items-center justify-between">
+    <header className="border-b  px-15px ">
+      <div className=" max-w-6xl h-60px mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <MenuAlt2Icon
             onClick={() => dispatch(toggleSideMenu())}
             className="min-w-10px text-gray-700 cursor-pointer inline-block sm:hidden h-5 mr-5"
           />
-          <div onClick={() => router.push("/")} className="min-w-100px">
-            <Image
-              className="cursor-pointer"
-              src="/images/O.HI.O-logo.svg"
-              width={100}
-              height={40}
-priority={true}
 
+          <Image
+            onClick={() => router.push("/")}
+            className="w-80px h-40px sm:w-100px sm:h-50px"
+            className="cursor-pointer"
+            src="/images/O.HI.O-logo.svg"
+            width={100}
+            height={50}
+            layout="fixed"
+            priority={true}
+          />
 
-            />
-          </div>
-          {/* <span className="ml-10px sm:ml-20px relative ">
+          {/* <div className="ml-10px sm:ml-20px relative ">
             <input
               placeholder="搜尋商品"
               type="search"
-              className="inline max-w-100px sm:max-w-220px bg-gray-100 rounded text-sm sm:text-md p-10px pl-20px sm:pl-50px  ml-3"
+              className=" bg-gray-100 rounded text-sm sm:text-md p-10px pl-20px sm:pl-50px  ml-5"
             />
             <SearchIcon className="text-gray-600 h-5 absolute left-30px top-1/2 transform -translate-y-1/2" />
-          </span> */}
+          </div> */}
         </div>
         <nav>
           <ul className="flex items-center ml-5">
@@ -60,11 +61,11 @@ priority={true}
                 我想在 O.HI.O 上開店
               </Link>
             </li>
-            <li className="px-2 cursor-pointer ">
-              <HeartIcon
-                onClick={() => router.push("favorite")}
-                className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
-              />
+            <li
+              className="px-2 cursor-pointer "
+              onClick={() => router.push("/favorite?tab=products")}
+            >
+              <HeartIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
             </li>
             <li className="px-2 cursor-pointer ">
               {isUserLoggedIn ? (
@@ -76,7 +77,7 @@ priority={true}
               ) : (
                 // <div>{currentUser.name}</div>
                 <UserIcon
-                  onClick={() => router.push("login")}
+                  onClick={() => router.push("/login")}
                   className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"
                 />
               )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Link from "next/link";
 import PropTypes from "prop-types";
 import { CheckIcon, PlusIcon } from "@heroicons/react/outline";
 
@@ -23,8 +23,8 @@ const ShopCard = ({ shop }) => {
     dispatch(openLoginModal());
   };
   const [followedFavoriteShop, setFollowedFavoriteShop] = useState(-1);
-  const toShop = (id) => {
-    router.push(`/shop/${id}?tab=product`);
+  const toShop = (shop) => {
+    router.push(`/shops/${shop}?tab=products`);
   };
   useEffect(() => {
     if (!favoriteShops) return;
@@ -40,30 +40,36 @@ const ShopCard = ({ shop }) => {
   return (
     <div className="overflow-x-auto border-1 border-gray-400 hover:opacity-70">
       <div
-        onClick={() => toShop(shop.account)}
-        className="flex cursor-pointer "
+        onClick={() => {
+          router.push({
+            pathname: "/shops/[shop]",
+            query: { shop: shop.account },
+          });
+        }}
       >
-        <div className="flex-auto">
-          <img
-            className="w-full h-auto"
-            src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
-            alt=""
-          />
-        </div>
-        <div className="flex flex-1 flex-col">
-          <div>
+        <div className="flex cursor-pointer ">
+          <div className="flex-auto">
             <img
-              className="h-auto w-full"
-              src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+              className="w-full h-auto"
+              src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
               alt=""
             />
           </div>
-          <div>
-            <img
-              className="h-auto w-full"
-              src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
-              alt=""
-            />
+          <div className="flex flex-1 flex-col">
+            <div>
+              <img
+                className="h-auto w-full"
+                src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                className="h-auto w-full"
+                src="https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>

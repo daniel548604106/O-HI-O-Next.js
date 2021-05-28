@@ -1,5 +1,5 @@
-import dbConnect from "../../../../../utils/mongoDB";
-import Shop from "../../../../../models/shopModel";
+import dbConnect from "../../../../utils/mongoDB";
+import Shop from "../../../../models/shopModel";
 
 export default async function (req, res) {
   await dbConnect();

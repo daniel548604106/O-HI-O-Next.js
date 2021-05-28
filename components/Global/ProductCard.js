@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
       dispatch(addToFavorite(id, type));
       return;
     }
-    dispatch(openLoginModal());
+    router.push("/login");
   };
 
   useEffect(() => {

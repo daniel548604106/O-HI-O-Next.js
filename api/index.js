@@ -50,10 +50,16 @@ export const apiGetFavList = getFavList;
 
 // Shop
 
-import { getPopularShops, getShopProducts, getShopInfo } from "./shopRequest";
+import {
+  getPopularShops,
+  getShopProducts,
+  getShopInfo,
+  getAllShops,
+} from "./shopRequest";
 export const apiGetShopProducts = getShopProducts;
 export const apiGetPopularShops = getPopularShops;
 export const apiGetShopInfo = getShopInfo;
+export const apiGetAllShops = getAllShops;
 
 // My
 
