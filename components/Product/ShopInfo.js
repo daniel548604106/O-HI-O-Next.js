@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { PlusIcon, CheckIcon } from "@heroicons/react/outline";
-import Stars from "../../Global/Stars/Stars.jsx";
+import Stars from "../Global/Stars";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorite } from "../../redux/actions/globalAction";
@@ -26,68 +26,69 @@ const ShopInfo = ({ product, shopInfo }) => {
     }
   };
   return (
-    <div>
-      <div className={classes.designShopRoot}>
-        <h2 className={classes.title}>關於設計館</h2>
-        <div className={classes.designShopLayout}>
-          <img
-            onClick={() => directToShop(product.publishedBy.account)}
-            className={classes.designShopLogo}
-            src={product && product.publishedBy.logo}
-            alt="shop-logo"
-          />
-          <div>
-            <p>{product && product.publishedBy.name}</p>
-            <Stars />
-          </div>
-        </div>
-        {favoriteShops && (
-          <div className={classes.ctaBtnRow}>
-            {shopFollowed ? (
-              <button
-                onClick={() => followShop(product.publishedBy._id)}
-                className={classes.followed}
-              >
-                <CheckIcon />
-                <p>關注中</p>
-              </button>
-            ) : (
-              <button
-                onClick={() => followShop(product.publishedBy._id)}
-                className={classes.follow}
-              >
-                <PlusIcon />
-                <p>加入關注</p>
-              </button>
-            )}
+    <div>sdf</div>
+    // <div>
+    //   <div className={classes.designShopRoot}>
+    //     <h2 className={classes.title}>關於設計館</h2>
+    //     <div className={classes.designShopLayout}>
+    //       <img
+    //         onClick={() => directToShop(product.publishedBy.account)}
+    //         className={classes.designShopLogo}
+    //         src={product && product.publishedBy.logo}
+    //         alt="shop-logo"
+    //       />
+    //       <div>
+    //         <p>{product && product.publishedBy.name}</p>
+    //         <Stars />
+    //       </div>
+    //     </div>
+    //     {favoriteShops && (
+    //       <div className={classes.ctaBtnRow}>
+    //         {shopFollowed ? (
+    //           <button
+    //             onClick={() => followShop(product.publishedBy._id)}
+    //             className={classes.followed}
+    //           >
+    //             <CheckIcon />
+    //             <p>關注中</p>
+    //           </button>
+    //         ) : (
+    //           <button
+    //             onClick={() => followShop(product.publishedBy._id)}
+    //             className={classes.follow}
+    //           >
+    //             <PlusIcon />
+    //             <p>加入關注</p>
+    //           </button>
+    //         )}
 
-            <button
-              onClick={() => patchChat(product.publishedBy.user)}
-              className={classes.contact}
-            >
-              <p>聯絡店家</p>
-            </button>
-          </div>
-        )}
-        <div className={classes.productPreview}>
-          {shopInfo &&
-            shopInfo.products.map((product) => (
-              <>
-                <img
-                  key={product.name}
-                  src={product.images[0]}
-                  alt={product.name}
-                />
-                <p>{product.name}</p>
-              </>
-            ))}
-        </div>
-        <hr className={classes.separator} />
-        <div className={classes.shareRow}>
-          <h1 className={classes.title}>Share</h1>
-        </div>
-      </div>
-    </div>
+    //         <button
+    //           onClick={() => patchChat(product.publishedBy.user)}
+    //           className={classes.contact}
+    //         >
+    //           <p>聯絡店家</p>
+    //         </button>
+    //       </div>
+    //     )}
+    //     <div className={classes.productPreview}>
+    //       {shopInfo &&
+    //         shopInfo.products.map((product) => (
+    //           <>
+    //             <img
+    //               key={product.name}
+    //               src={product.images[0]}
+    //               alt={product.name}
+    //             />
+    //             <p>{product.name}</p>
+    //           </>
+    //         ))}
+    //     </div>
+    //     <hr className={classes.separator} />
+    //     <div className={classes.shareRow}>
+    //       <h1 className={classes.title}>Share</h1>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

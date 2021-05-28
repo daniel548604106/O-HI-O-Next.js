@@ -21,23 +21,25 @@ module.exports = {
         100: "100",
       },
 
-transitionProperty: {
-      none: 'none',
-      all: 'all',
-      default: 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
-      colors: 'background-color, border-color, color, fill, stroke',
-      opacity: 'opacity',
-      shadow: 'box-shadow',
-      transform: 'transform',
-      width: 'width',
-      height: 'height',
-      'opacity-height': 'opacity, height',
-      'max-width': 'max-width',
-      'max-height': 'max-height',
-      position: 'top, left, right, bottom',
-      pm: 'padding, margin, opacity, background-color, color',
-      positionColor: 'background-color, border-color, color, fill, stroke opacity top, left, right, bottom'
-    },
+      transitionProperty: {
+        none: "none",
+        all: "all",
+        default:
+          "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform",
+        colors: "background-color, border-color, color, fill, stroke",
+        opacity: "opacity",
+        shadow: "box-shadow",
+        transform: "transform",
+        width: "width",
+        height: "height",
+        "opacity-height": "opacity, height",
+        "max-width": "max-width",
+        "max-height": "max-height",
+        position: "top, left, right, bottom",
+        pm: "padding, margin, opacity, background-color, color",
+        positionColor:
+          "background-color, border-color, color, fill, stroke opacity top, left, right, bottom",
+      },
 
       width: {
         "30px": "30px",
@@ -66,6 +68,9 @@ transitionProperty: {
         "80px": "80px",
         "90px": "90px",
         "100px": "100px",
+        "20%": "20%",
+        "40%": "40%",
+        "80%": "80%",
       },
       margin: {
         "10px": "10px",
@@ -128,6 +133,7 @@ transitionProperty: {
         "100px": "100px",
         "150px": "150px",
         "200px": "200px",
+        "250px": "250px",
         "300px": "300px",
         "730px": "730px",
         "60vh": "60vh",
@@ -172,6 +178,8 @@ transitionProperty: {
         "100px": "100px",
       },
       inset: {
+        "2px": "2px",
+        "8px": "8px",
         "10px": "10px",
         "20px": "20px",
         "30px": "30px",
@@ -182,6 +190,8 @@ transitionProperty: {
         "80px": "80px",
         "90px": "90px",
         "100px": "100px",
+        "20%": "20%",
+        "80%": "80%",
       },
 
       minWidth: {
@@ -207,7 +217,7 @@ transitionProperty: {
     },
   },
   variants: {
-    extend: {},
+    transitionProperty: ["responsive", "motion-safe", "motion-reduce"],
   },
   plugins: [
     require("@tailwindcss/line-clamp"),

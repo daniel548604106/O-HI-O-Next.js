@@ -1,7 +1,7 @@
-import axios from '../lib/axiosConfig';
+import axios from "../lib/axiosConfig";
 
-export const getHotShop = async () => {
-  return await axios.get('/shops/hot');
+export const getPopularShops = async () => {
+  return await axios.get("/shops/popular");
 };
 
 export const getShopProducts = async (account) => {
@@ -9,5 +9,9 @@ export const getShopProducts = async (account) => {
 };
 
 export const getShopInfo = (account) => {
-  return axios.get(`/shops/${account}`);
+  return axios.get(`/shops/shop/${account}`);
+};
+
+export const getAllShops = () => {
+  return axios.get(`/shops`);
 };

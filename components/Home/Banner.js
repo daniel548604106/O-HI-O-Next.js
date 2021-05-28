@@ -15,8 +15,8 @@ const Banner = ({ banners }) => {
             <SwiperSlide>
               <Image
                 src={banner.image}
-                width={1200}
-                height={600}
+                width={1100}
+                height={500}
                 layout="responsive"
               />
             </SwiperSlide>
