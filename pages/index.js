@@ -4,19 +4,24 @@ import Banner from "../components/Home/Banner";
 import {
   apiGetBanners,
   apiGetDiscountedProducts,
+  apiGetEditorPickedProducts,
+  apiGetPopularShops,
   apiGetRecommendedProducts,
 } from "../api/index";
-import ProductCard from "../components/Global/ProductCard";
+import ShopCardRow from "../components/Home/ShopCardRow";
+import ProductCardRow from "../components/Home/ProductCardRow";
 export default function Home({
   banners,
   recommendedProducts,
   discountedProducts,
+  editorPickedProducts,
+  popularShops,
 }) {
   return (
     <div>
       <Head>
         <title>O-HI-O | 亞洲購物專家</title>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <link rel="icon" href="./favicon.ico" />
         <meta
           name="viewport"
@@ -43,22 +48,31 @@ export default function Home({
           content="https://cdn01.pinkoi.com/product/ZD5QQsTg/0/800x0.jpg"
         />
         <link rel="apple-touch-icon" href="./favicon.ico" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
         <meta name="theme-color" />
       </Head>
       <Banner banners={banners.banners} />
       <main className="py-20px sm:py-50px max-w-1200px w-full mx-auto">
         <section className="px-15px mb-20px sm:mb-50px">
-          <ProductCard
+          <ProductCardRow
             title={"推薦商品"}
             products={recommendedProducts.products}
           />
         </section>
         <section className="px-15px mb-20px sm:mb-50px">
-          <ProductCard
+          <ProductCardRow
             title={"限時優惠"}
             products={discountedProducts.products}
           />
+        </section>
+        <section className="px-15px mb-20px sm:mb-50px">
+          <ProductCardRow
+            title={"小編精選"}
+            products={editorPickedProducts.products}
+          />
+        </section>
+        <section className="px-15px mb-20px sm:mb-50px">
+          <ShopCardRow shops={popularShops} />
         </section>
       </main>
     </div>
@@ -73,12 +87,21 @@ export async function getServerSideProps() {
   const discountedProducts = JSON.parse(
     JSON.stringify((await apiGetDiscountedProducts()).data)
   );
+  const editorPickedProducts = JSON.parse(
+    JSON.stringify((await apiGetEditorPickedProducts()).data)
+  );
+  const popularShops = JSON.parse(
+    JSON.stringify((await apiGetPopularShops()).data.shops)
+  );
+
   const banners = JSON.parse(JSON.stringify(res.data));
   return {
     props: {
       banners,
       recommendedProducts,
       discountedProducts,
+      editorPickedProducts,
+      popularShops,
     },
   };
 }

@@ -58,7 +58,7 @@ const SideMenu = () => {
     <div
       className={`${
         !isSideMenuOpen && " -translate-x-full"
-      } fixed z-50 top-0 max-w-300px  left-0 overflow-y-auto delay-150 w-full transition-transform duration-500 ease-in-out  transform h-screen border border-r bg-white `}
+      } fixed z-50 top-0 max-w-300px  pb-30px left-0 overflow-y-auto delay-150 w-full transition-transform duration-500 ease-in-out  transform h-screen border border-r bg-white `}
     >
       {isUserLoggedIn ? (
         <div onClick={() => dispatch(toggleSideMenu())} className=" ">
@@ -87,13 +87,13 @@ const SideMenu = () => {
             >
               <span>{category.title}</span>
               <ChevronDownIcon
-                className={`h-5 transition-transform duration-300 ease-in-out transform ${
+                className={`h-5 transition   duration-300 ease-in-out transform ${
                   idx === activeCategory && "rotate-180"
                 }`}
               />
             </div>
             <div
-              className={`h-0 transition-all duration-300 text-sm bg-gray-100  overflow-hidden ${
+              className={`h-0 transition-height duration-300 text-sm bg-gray-100  overflow-hidden ${
                 idx === activeCategory && "h-auto"
               }`}
             >

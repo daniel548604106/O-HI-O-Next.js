@@ -1,7 +1,7 @@
-import axios from '../lib/axiosConfig';
+import axios from "../lib/axiosConfig";
 
-export const getHotShop = async () => {
-  return await axios.get('/shops/hot');
+export const getPopularShops = async () => {
+  return await axios.get("/shops/popular");
 };
 
 export const getShopProducts = async (account) => {
