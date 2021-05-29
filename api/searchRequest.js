@@ -1,5 +1,5 @@
-import axios from '../lib/axiosConfig';
+import request from "../lib/axiosConfig";
 
 export const getSearchedProducts = (text) => {
-  return axios.get(`/search?text=${text}`);
+  return request.get(`/search?text=${text}`);
 };
