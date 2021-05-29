@@ -1,4 +1,4 @@
-import request from "../lib/requestConfig";
+import request from "../lib/axiosConfig";
 
 export const getBanners = async () => {
   return await request.get(`/banners`);

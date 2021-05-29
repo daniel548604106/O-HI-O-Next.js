@@ -1,4 +1,4 @@
-import request from "request";
+import request from "../lib/axiosConfig";
 import Cookie from "js-cookie";
 const token = Cookie.get("token");
 export const patchChat = async (id) => {

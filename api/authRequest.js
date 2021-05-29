@@ -1,4 +1,4 @@
-import request from "../lib/requestConfig";
+import request from "../lib/axiosConfig";
 
 //註冊
 
