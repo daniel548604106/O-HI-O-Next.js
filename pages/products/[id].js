@@ -119,8 +119,6 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
-
 // This function gets called at build time
 // 先取得所有資料的 id
 export async function getStaticPaths() {
@@ -134,13 +132,13 @@ export async function getStaticPaths() {
 // This also gets called at build time
 
 export async function getStaticProps(context) {
-  const product = JSON.parse(
-    JSON.stringify((await apiGetProduct(context.params.id)).data.product)
-  );
-  console.log("hello", product);
+  const { data } = await apiGetProduct(context.params.id);
+  const product = JSON.parse(JSON.stringify(data.product));
   return {
     props: {
       product,
     },
   };
 }
+
+export default Product;
