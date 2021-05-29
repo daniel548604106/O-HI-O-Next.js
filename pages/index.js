@@ -15,10 +15,10 @@ import ProductCardRow from "../components/Home/ProductCardRow";
 import { getFavList } from "../redux/actions/globalAction";
 export default function Home({
   banners,
-  recommendedProducts,
-  discountedProducts,
-  editorPickedProducts,
-  popularShops,
+  // recommendedProducts,
+  // discountedProducts,
+  // editorPickedProducts,
+  // popularShops,
 }) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -64,13 +64,13 @@ export default function Home({
       </Head>
       <Banner banners={banners.banners} />
       <main className="py-20px sm:py-50px max-w-1200px w-full mx-auto">
-        <section className="px-15px mb-20px sm:mb-50px">
+        {/* <section className="px-15px mb-20px sm:mb-50px">
           <ProductCardRow
             title={"推薦商品"}
             products={recommendedProducts.products}
           />
-        </section>
-        <section className="px-15px mb-20px sm:mb-50px">
+        </section> */}
+        {/* <section className="px-15px mb-20px sm:mb-50px">
           <ProductCardRow
             title={"限時優惠"}
             products={discountedProducts.products}
@@ -84,7 +84,7 @@ export default function Home({
         </section>
         <section className="px-15px mb-20px sm:mb-50px">
           <ShopCardRow shops={popularShops} />
-        </section>
+        </section> */}
       </main>
     </div>
   );
@@ -92,9 +92,9 @@ export default function Home({
 
 export async function getServerSideProps() {
   const res = await apiGetBanners();
-  const recommendedProducts = JSON.parse(
-    JSON.stringify((await apiGetRecommendedProducts()).data)
-  );
+  // const recommendedProducts = JSON.parse(
+  //   JSON.stringify((await apiGetRecommendedProducts()).data)
+  // );
   const discountedProducts = JSON.parse(
     JSON.stringify((await apiGetDiscountedProducts()).data)
   );
@@ -108,10 +108,10 @@ export async function getServerSideProps() {
   return {
     props: {
       banners,
-      recommendedProducts,
-      discountedProducts,
-      editorPickedProducts,
-      popularShops,
+      // recommendedProducts,
+      // discountedProducts,
+      // editorPickedProducts,
+      // popularShops,
     },
   };
 }
