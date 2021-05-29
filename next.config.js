@@ -31,8 +31,7 @@ module.exports = {
     MONGO_URI: process.env.MONGO_URI,
     JWT_SECRET: process.env.JWT_SECRET,
   },
-  // Target must be serverless
-  target: "serverless",
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
