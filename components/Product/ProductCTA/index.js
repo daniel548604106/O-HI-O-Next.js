@@ -1,5 +1,5 @@
 import React from "react";
-import { HeartIcon, ChevronRightIcon } from "@heroicons/react/outline";
+import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 import Button from "../Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,33 +30,33 @@ const ProductCTA = ({ product }) => {
 
   return (
     <div>
-      <div onClick={() => addItemToCart()}>加入購物車</div>
-      <div
-        onClick={() => addToWishList()}
-        className={`sm:block hidden ${
-          favoriteProducts.find(
-            (favoriteProduct) => favoriteProduct._id === product._id
-          )
-            ? "text-gray-500"
-            : ""
-        }`}
-      >
-        {favoriteProducts.find(
-          (favoriteProduct) => favoriteProduct._id === product._id
-        ) ? (
-          <div>Saved</div>
-        ) : (
-          <>
-            <div>
-              <Button title="Add To WishList" Icon={HeartIcon} />
+      <Button
+        onClick={() => addItemToCart()}
+        bgColor="bg-main-pink"
+        textColor="text-white"
+        title="加入購物車"
+        Icon={ShoppingCartIcon}
+      />
 
-              <ChevronRightIcon />
-            </div>
-            <p>Save for future shopping</p>
-          </>
-        )}
-      </div>
-      }
+      {favoriteProducts.find(
+        (favoriteProduct) => favoriteProduct._id === product._id
+      ) ? (
+        <Button
+          bgColor="bg-main-pink"
+          textColor="text-white"
+          title="Saved"
+          Icon={HeartIcon}
+        />
+      ) : (
+        <span className="mt-10px hidden sm:block">
+          <Button
+            bgColor="bg-black"
+            textColor="text-white"
+            title="Add To WishList"
+            Icon={HeartIcon}
+          />
+        </span>
+      )}
     </div>
   );
 };
