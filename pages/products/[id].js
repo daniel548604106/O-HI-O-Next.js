@@ -144,8 +144,8 @@
 // export default Product;
 import React from "react";
 
-const [id] = () => {
+const Product = () => {
   return <div>hi</div>;
 };
 
-export default [id];
+export default Product;
