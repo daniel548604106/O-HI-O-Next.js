@@ -1,12 +1,9 @@
-import axios from '../lib/axiosConfig';
+import axios from "../lib/axiosConfig";
 
 export const addToFavorite = async (id, token, type) => {
-  return await axios.patch(
-    '/favorite',
-    { id, type }
-  );
+  return await axios.patch("/favorites", { id, type });
 };
 
-export const getFavList = async (token) => {
-  return await axios.get('/favorite');
+export const getFavList = async () => {
+  return await axios.get("/favorites");
 };

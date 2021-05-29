@@ -1,15 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers/userReducer";
-import { globalReducer } from "./reducers/globalReducer";
-import { cartReducer } from "./reducers/cartReducer";
-import { checkoutReducer } from "./reducers/checkoutReducer";
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-    global: globalReducer,
-    cart: cartReducer,
-    checkout: checkoutReducer,
-  },
-});
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-export default store;
+import { persistStore } from "redux-persist";
+import reducers from "./rootReducer";
+const initialState = {};
+const middleware = [thunk];
+
+export const store = createStore(
+  reducers,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export const persistor = persistStore(store);

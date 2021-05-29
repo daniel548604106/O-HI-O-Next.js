@@ -9,6 +9,7 @@ module.exports = {
         "about-bg-img":
           "url('https://images.unsplash.com/photo-1579986736295-338a3a637862?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80')",
       }),
+
       colors: {
         "light-blue": "#178fac",
         "main-pink": "#eb7f82",
@@ -20,6 +21,27 @@ module.exports = {
         50: "50",
         100: "100",
       },
+
+      transitionProperty: {
+        none: "none",
+        all: "all",
+        default:
+          "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform",
+        colors: "background-color, border-color, color, fill, stroke",
+        opacity: "opacity",
+        shadow: "box-shadow",
+        transform: "transform",
+        width: "width",
+        height: "height",
+        "opacity-height": "opacity, height",
+        "max-width": "max-width",
+        "max-height": "max-height",
+        position: "top, left, right, bottom",
+        pm: "padding, margin, opacity, background-color, color",
+        positionColor:
+          "background-color, border-color, color, fill, stroke opacity top, left, right, bottom",
+      },
+
       width: {
         "30px": "30px",
         "40px": "40px",
@@ -47,6 +69,9 @@ module.exports = {
         "80px": "80px",
         "90px": "90px",
         "100px": "100px",
+        "20%": "20%",
+        "40%": "40%",
+        "80%": "80%",
       },
       margin: {
         "10px": "10px",
@@ -109,6 +134,7 @@ module.exports = {
         "100px": "100px",
         "150px": "150px",
         "200px": "200px",
+        "250px": "250px",
         "300px": "300px",
         "730px": "730px",
         "60vh": "60vh",
@@ -153,6 +179,8 @@ module.exports = {
         "100px": "100px",
       },
       inset: {
+        "2px": "2px",
+        "8px": "8px",
         "10px": "10px",
         "20px": "20px",
         "30px": "30px",
@@ -163,6 +191,8 @@ module.exports = {
         "80px": "80px",
         "90px": "90px",
         "100px": "100px",
+        "20%": "20%",
+        "80%": "80%",
       },
 
       minWidth: {
@@ -188,7 +218,7 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    transitionProperty: ["responsive", "motion-safe", "motion-reduce"],
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
