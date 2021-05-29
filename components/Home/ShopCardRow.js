@@ -5,7 +5,7 @@ const ShopCardRow = ({ shops }) => {
   return (
     <div className="w-full">
       <h2 className="mb-10px text-lg sm:text-2xl font-semibold">熱門商家</h2>
-      <div className=" flex flex-nowrap overflow-x-auto whitespace-nowrap">
+      <div className=" flex scrollbar-hide flex-nowrap overflow-x-auto whitespace-nowrap">
         {shops.map((shop) => (
           <div key={shop._id} className="mr-20px w-300px min-w-300px">
             <ShopCard shop={shop} />

@@ -4,40 +4,77 @@ import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { addToFavorite } from "../../redux/actions/globalAction";
 import { HeartIcon } from "@heroicons/react/outline";
+import { HeartIcon as HeartSolidIcon } from "@heroicons/react/solid";
 import { discount } from "../../lib/tool";
 import Image from "next/image";
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, favoriteProductIds }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [addedFavorite, setAddedFavorite] = useState(-1);
+  const [saved, setSaved] = useState(false);
+  const [savedList, setSavedList] = useState([]);
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
-  const favoriteProducts = useSelector(
-    (state) => state.global.favoriteProducts
-  );
   const directToProduct = () => {
-    console.log("push");
     router.push(`/products/${product._id}`);
   };
-  const addItemToFavorite = (e, id) => {
-    e.stopPropagation();
-    if (isUserLoggedIn) {
-      const type = "product";
-      dispatch(addToFavorite(id, type));
-      return;
-    }
-    router.push("/login");
-  };
-
   useEffect(() => {
-    if (!favoriteProducts) return;
-    const searchFavorite = () => {
-      const productIds = favoriteProducts.map((item) => {
-        return item._id;
-      });
-      // setAddedFavorite(productIds.indexOf(product._id));
-    };
-    searchFavorite();
-  }, [favoriteProducts]);
+    setSavedList(favoriteProductIds);
+  }, [favoriteProductIds]);
+
+  // useEffect(() => {
+  //   if (product) {
+  //     if (savedList.includes(product._id)) {
+  //       setSaved(true);
+  //     } else {
+  //       setSaved(false);
+  //     }
+  //   }
+  // }, [savedList, favoriteProductIds]);
+  // useEffect(() => {
+  //   let products = favoriteProducts.map((product) => {
+  //     return product._id;
+  //   });
+  //   setFavoriteListIds(products);
+  //   console.log(favoriteListIds);
+  // }, [favoriteProducts]);
+
+  // useEffect(() => {
+  //   if (favoriteListIds.find(product._id)) {
+  //     setSaved(true);
+  //   } else {
+  //     setSaved(false);
+  //   }
+  // }, [favoriteListIds]);
+
+  // const addItemToFavorite = (e, id) => {
+  //   e.stopPropagation();
+  //   if (isUserLoggedIn) {
+  //     const type = "product";
+  //     dispatch(addToFavorite(id, type));
+  //     return;
+  //   }
+  //   router.push("/login");
+  // };
+
+  const toggleHeartIcon = (id) => {
+    console.log(savedList);
+    // if (savedList.includes(id)) {
+    //   console.log("hi");
+    // } else {
+    setSavedList((prevState) => {
+      return { ...prevState, id };
+    });
+    // }
+  };
+  // useEffect(() => {
+  //   if (!favoriteProducts) return;
+  //   const searchFavorite = () => {
+  //     const productIds = favoriteProducts.map((item) => {
+  //       return item._id;
+  //     });
+  //     // setAddedFavorite(productIds.indexOf(product._id));
+  //   };
+  //   searchFavorite();
+  // }, [favoriteProducts]);
 
   return (
     <div
@@ -53,10 +90,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
       {product ? (
-        <div
-          className=" relative hover:opacity-70"
-          onClick={() => directToProduct(product._id)}
-        >
+        <div className=" relative hover:opacity-70">
           <div className="relative">
             <Image
               className="min-h-150px w-150px sm:min-w-200px sm:min-h-200px"
@@ -65,12 +99,17 @@ const ProductCard = ({ product }) => {
               src={product.images[0]}
               alt={product.name}
             />
-            <HeartIcon
-              onClick={(e) => addItemToFavorite(e, product._id)}
-              className={`text-white h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 ${
-                addedFavorite > -1 && "bg-main-pink"
-              }`}
-            />
+            {saved ? (
+              <HeartSolidIcon
+                onClick={() => toggleHeartIcon(product._id)}
+                className={`text-main-pink h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 `}
+              />
+            ) : (
+              <HeartIcon
+                onClick={() => toggleHeartIcon(product._id)}
+                className={`text-white h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 `}
+              />
+            )}
           </div>
           <div className="p-10px h-100px flex  flex-col justify-between">
             <h2 className="text-sm md:text-md line-clamp-2 overflow-hidden font-semibold ">
@@ -111,6 +150,7 @@ const ProductCard = ({ product }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.object,
+  favoriteProductIds: PropTypes.array,
 };
 
 export default ProductCard;
