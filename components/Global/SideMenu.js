@@ -7,12 +7,9 @@ import { useRouter } from "next/router";
 import { categories } from "../../lib/tool";
 import SideMenuUserTab from "./SideMenuUserTab";
 import Overlay from "./Overlay";
-import { isSideMenuOpen } from "../../redux/reducers/globalReducer";
 import { toggleSideMenu } from "../../redux/actions/globalAction";
 import { setUserLogout } from "../../redux/actions/userAction";
 const SideMenu = () => {
-  // const { t, i18n } = useTranslation();
-
   const dispatch = useDispatch();
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState(-1);
@@ -160,16 +157,16 @@ const SideMenu = () => {
     </div>
   );
 
-  return (
-    isSideMenuOpen && (
-      <div onClick={() => dispatch(toggleSideMenu())}>
-        <Overlay>
-          <div onClick={(e) => e.stopPropagation()}>
-            <CtaBtn />
-          </div>
-        </Overlay>
-      </div>
-    )
+  return isSideMenuOpen ? (
+    <div onClick={() => dispatch(toggleSideMenu())}>
+      <Overlay>
+        <div onClick={(e) => e.stopPropagation()}>
+          <CtaBtn />
+        </div>
+      </Overlay>
+    </div>
+  ) : (
+    <></>
   );
 };
 

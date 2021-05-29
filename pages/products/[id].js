@@ -13,11 +13,10 @@ import {
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
 import ProductBanner from "../../components/Product/ProductBanner";
 import ProductDisplay from "../../components/Product/ProductDisplay";
-import ProductInfo from "../../components/Product/ProductInfo";
-import ProductCTA from "../../components/Product/ProductCTA";
-import ProductDescription from "../../components/Product/ProductDescription";
-import ShopInfo from "../../components/Product/ShopInfo";
-// import { useTranslation } from "react-i18next";
+import ProductInfo from "../../components/Product/ProductInfo/index";
+import ProductCTA from "../../components/Product/ProductCTA/index";
+import ProductDescription from "../../components/Product/ProductDescription/index";
+import ShopInfo from "../../components/Product/ShopInfo/index";
 
 const Product = ({ product }) => {
   // const { t, i18n } = useTranslation();
@@ -26,7 +25,6 @@ const Product = ({ product }) => {
   const topDisplay = useRef(null);
   const productDescription = createRef();
   const evaluation = createRef();
-
   const [shopInfo] = useState("");
   const [recommendedProducts, setRecommendedProducts] = useState([]);
   const [showBanner, setShowBanner] = useState(false);
@@ -38,6 +36,13 @@ const Product = ({ product }) => {
     dispatch(listProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    const getRecommendedProducts = async () => {
+      const { data } = await apiGetRecommendedProducts();
+      setRecommendedProducts(data.products);
+    };
+    getRecommendedProducts();
+  }, []);
   // Show Banner
   useEffect(() => {
     console.log(product);
@@ -76,7 +81,7 @@ const Product = ({ product }) => {
         <div ref={topDisplay} className={"flex-auto"}>
           <ProductDisplay product={product} />
         </div>
-        <section className={"flex-1"}>
+        <section className={"flex-1 px-15px py-15px"}>
           <div>
             <ProductInfo product={product} />
           </div>
@@ -85,23 +90,30 @@ const Product = ({ product }) => {
           </div>
         </section>
       </div>
-      <div className={"flex flex-col sm:flex-row mx-auto mb-15px sm:mb-30px "}>
+      <div
+        className={
+          "flex flex-col sm:flex-row mx-auto mb-15px sm:mb-30px px-15px "
+        }
+      >
         <section className={"flex-auto"}>
           <ProductDescription
-            productDescriptionRef={"flex-1"}
+            className="flex-1"
+            productDescriptionRef={productDescription}
             evaluationRef={evaluation}
             id="product-description"
             product={product}
             reviews={reviews}
           />
         </section>
-        <section className={"sticky top-100px self-start"}>
+        <section className={"sticky w-full top-100px self-start"}>
           <ShopInfo product={product} shopInfo={shopInfo} />
         </section>
       </div>
-      <section>
-        <ProductRecommendation products={recommendedProducts} />
-      </section>
+      <div className="px-15px">
+        <section>
+          <ProductRecommendation products={recommendedProducts} />
+        </section>
+      </div>
     </div>
   );
 };
@@ -122,7 +134,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const product = JSON.parse(
-    JSON.stringify((await apiGetProduct(context.params.id)).data)
+    JSON.stringify((await apiGetProduct(context.params.id)).data.product)
   );
   console.log("hello", product);
   return {

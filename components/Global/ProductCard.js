@@ -13,17 +13,22 @@ const ProductCard = ({ product, favoriteProductIds }) => {
   const [saved, setSaved] = useState(false);
   const [savedList, setSavedList] = useState([]);
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
+  const directToProduct = () => {
+    router.push(`/products/${product._id}`);
+  };
   useEffect(() => {
     setSavedList(favoriteProductIds);
   }, [favoriteProductIds]);
 
-  useEffect(() => {
-    if (savedList.includes(product._id)) {
-      setSaved(true);
-    } else {
-      setSaved(false);
-    }
-  }, [savedList, favoriteProductIds]);
+  // useEffect(() => {
+  //   if (product) {
+  //     if (savedList.includes(product._id)) {
+  //       setSaved(true);
+  //     } else {
+  //       setSaved(false);
+  //     }
+  //   }
+  // }, [savedList, favoriteProductIds]);
   // useEffect(() => {
   //   let products = favoriteProducts.map((product) => {
   //     return product._id;
@@ -39,10 +44,7 @@ const ProductCard = ({ product, favoriteProductIds }) => {
   //     setSaved(false);
   //   }
   // }, [favoriteListIds]);
-  // const directToProduct = () => {
-  //   console.log("push");
-  //   router.push(`/products/${product._id}`);
-  // };
+
   // const addItemToFavorite = (e, id) => {
   //   e.stopPropagation();
   //   if (isUserLoggedIn) {
@@ -76,7 +78,7 @@ const ProductCard = ({ product, favoriteProductIds }) => {
 
   return (
     <div
-      // onClick={() => directToProduct()}
+      onClick={() => directToProduct()}
       className="relative cursor-pointer w-full"
     >
       <div className="absolute top-0 flex items-center left-0 z-10 text-white uppercase">
@@ -88,10 +90,7 @@ const ProductCard = ({ product, favoriteProductIds }) => {
         )}
       </div>
       {product ? (
-        <div
-          className=" relative hover:opacity-70"
-          // onClick={() => directToProduct(product._id)}
-        >
+        <div className=" relative hover:opacity-70">
           <div className="relative">
             <Image
               className="min-h-150px w-150px sm:min-w-200px sm:min-h-200px"

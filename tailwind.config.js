@@ -9,6 +9,7 @@ module.exports = {
         "about-bg-img":
           "url('https://images.unsplash.com/photo-1579986736295-338a3a637862?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80')",
       }),
+
       colors: {
         "light-blue": "#178fac",
         "main-pink": "#eb7f82",
