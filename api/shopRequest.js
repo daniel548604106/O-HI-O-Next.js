@@ -11,3 +11,7 @@ export const getShopProducts = async (account) => {
 export const getShopInfo = (account) => {
   return axios.get(`/shops/shop/${account}`);
 };
+
+export const getAllShops = () => {
+  return axios.get("/shops");
+};
