@@ -1,23 +1,23 @@
-import axios from "../lib/axiosConfig";
+import request from "../lib/requestConfig";
 
 export const getAllProducts = () => {
-  return axios.get(`/products`);
+  return request.get(`/products`);
 };
 export const getDiscountedProducts = () => {
-  return axios.get("/products/discount");
+  return request.get("/products/discount");
 };
 export const getProduct = (id) => {
   console.log("2", id);
-  return axios.get(`/products/product/${id}`);
+  return request.get(`/products/product/${id}`);
 };
 
 export const getRecommendedProducts = () => {
-  return axios.get(`/products/recommendation`);
+  return request.get(`/products/recommendation`);
 };
 
 export const getEditorPickedProducts = () => {
-  return axios.get(`/products/editorPicked`);
+  return request.get(`/products/editorPicked`);
 };
 export const getCollectionProducts = (collection) => {
-  return axios.get(`/products/collection/${collection}`);
+  return request.get(`/products/collection/${collection}`);
 };

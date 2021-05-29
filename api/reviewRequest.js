@@ -1,7 +1,7 @@
-import axios from '../lib/axiosConfig';
+import request from "../lib/requestConfig";
 
 const getReviews = async (productId) => {
-  return await axios.get(`/reviews/${productId}`);
+  return await request.get(`/reviews/${productId}`);
 };
 
 export { getReviews };
