@@ -44,7 +44,6 @@ export const apiGetReviews = getReviews;
 // Favorite
 import { getFavList, addToFavorite } from "./favoriteRequest";
 
-// export const apiAddFavProduct = addFavProduct;
 export const apiAddToFavorite = addToFavorite;
 export const apiGetFavList = getFavList;
 

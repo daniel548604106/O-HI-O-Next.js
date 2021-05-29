@@ -56,6 +56,6 @@ shopSchema.virtual("followers", {
   foreignField: "favoriteShops",
 });
 
-const Shop = mongoose.model("shops", shopSchema);
+const Shop = mongoose.model("Shop", shopSchema);
 
 module.exports = Shop;

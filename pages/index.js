@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 import Head from "next/head";
 import Banner from "../components/Home/Banner";
 import {
@@ -8,8 +9,10 @@ import {
   apiGetPopularShops,
   apiGetRecommendedProducts,
 } from "../api/index";
+import { useDispatch, useSelector } from "react-redux";
 import ShopCardRow from "../components/Home/ShopCardRow";
 import ProductCardRow from "../components/Home/ProductCardRow";
+import { getFavList } from "../redux/actions/globalAction";
 export default function Home({
   banners,
   recommendedProducts,
@@ -17,6 +20,14 @@ export default function Home({
   editorPickedProducts,
   popularShops,
 }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (Cookie.get("token") !== undefined) {
+      console.log("set");
+      dispatch(getFavList());
+    }
+  }, [Cookie.get("token")]);
+
   return (
     <div>
       <Head>
@@ -93,7 +104,6 @@ export async function getServerSideProps() {
   const popularShops = JSON.parse(
     JSON.stringify((await apiGetPopularShops()).data.shops)
   );
-
   const banners = JSON.parse(JSON.stringify(res.data));
   return {
     props: {

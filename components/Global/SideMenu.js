@@ -87,9 +87,9 @@ const SideMenu = () => {
             >
               <span>{category.title}</span>
               <ChevronDownIcon
-                className={`h-5 transition   duration-300 ease-in-out transform ${
+                className={` ${
                   idx === activeCategory && "rotate-180"
-                }`}
+                } h-5  transition duration-500 ease-in-out transform`}
               />
             </div>
             <div

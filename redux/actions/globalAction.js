@@ -2,14 +2,11 @@ import {
   SET_USER_LOGIN,
   CLOSE_LOGIN_MODAL,
   OPEN_LOGIN_MODAL,
-  ADD_TO_FAVORITE_REQUEST,
-  ADD_TO_FAVORITE_FAILURE,
-  GET_FAVORITE_LIST_REQUEST,
-  GET_FAVORITE_LIST_SUCCESS,
-  GET_FAVORITE_LIST_FAILURE,
   OPEN_SIDE_MENU,
   TOGGLE_SIDE_MENU,
   CLOSE_SIDE_MENU,
+  ADD_TO_FAVORITE,
+  GET_FAVORITE_LIST,
 } from "../types";
 
 import Cookie from "js-cookie";
@@ -41,24 +38,22 @@ export const closeSideMenu = () => {
   };
 };
 
-export const getFavList = (token) => async (dispatch) => {
+export const getFavList = () => async (dispatch) => {
   try {
-    dispatch({ type: GET_FAVORITE_LIST_REQUEST });
-    const { data } = await apiGetFavList(token);
-    dispatch({ type: GET_FAVORITE_LIST_SUCCESS, payload: data.userFavList });
+    const { data } = await apiGetFavList();
+    dispatch({ type: GET_FAVORITE_LIST, payload: data.userFavList });
   } catch (error) {
-    dispatch({ type: GET_FAVORITE_LIST_FAILURE });
+    console.log(error);
   }
 };
 
 export const addToFavorite = (id, type) => async (dispatch) => {
   try {
-    dispatch({ type: ADD_TO_FAVORITE_REQUEST });
+    dispatch({ type: ADD_TO_FAVORITE });
     const token = Cookie.get("token");
     await apiAddToFavorite(id, token, type);
-    notify("已更新收藏");
     dispatch(getFavList(token));
   } catch (error) {
-    dispatch({ type: ADD_TO_FAVORITE_FAILURE });
+    console.log(error);
   }
 };
