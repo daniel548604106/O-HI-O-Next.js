@@ -46,7 +46,7 @@ const ProductInfo = ({ product }) => {
           <div className="flex items-center my-4">
             {product.discountPrice && (
               <div className="mr-10px">
-                <span className="rounded-t-md bg-main-pink text-white">
+                <span className="px-10px py-5px mr-10px border-main-pink border text-main-pink">
                   {discount(product)}
                 </span>
                 <span className="rounded-b-md text-main-pink">

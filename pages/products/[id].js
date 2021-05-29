@@ -19,7 +19,6 @@ import ProductDescription from "../../components/Product/ProductDescription/inde
 import ShopInfo from "../../components/Product/ShopInfo/index";
 
 const Product = ({ product }) => {
-  // const { t, i18n } = useTranslation();
   const router = useRouter();
   const dispatch = useDispatch();
   const topDisplay = useRef(null);
@@ -45,8 +44,9 @@ const Product = ({ product }) => {
   }, []);
   // Show Banner
   useEffect(() => {
-    console.log(product);
     window.addEventListener("scroll", function () {
+      console.log(window.pageYOffset);
+
       if (window.pageYOffset > 400) {
         setShowBanner(true);
       } else {
@@ -71,17 +71,17 @@ const Product = ({ product }) => {
   return (
     <div className="max-w-1200px mx-auto p-0 sm:p-20px">
       <div
-        className={`fixed top-0 left-0 z-0 w-full transition-all duration-300 ${
-          showBanner ? "-translate-y-100px" : ""
-        }`}
+        className={`${
+          showBanner ? "top-0" : ""
+        } fixed -top-full border-b  w-full left-0 z-50 bg-white transition-all duration-300 `}
       >
         <ProductBanner product={product} scrollToPage={scrollToPage} />
       </div>
-      <div className={`flex mx-auto flex-col sm:flex-row mb-15px sm:mb-30px`}>
-        <div ref={topDisplay} className={"flex-auto"}>
+      <div className={`flex  mx-auto flex-col sm:flex-row mb-15px sm:mb-30px`}>
+        <section ref={topDisplay} className={"w-full max-w-760px"}>
           <ProductDisplay product={product} />
-        </div>
-        <section className={"flex-1 px-15px py-15px"}>
+        </section>
+        <section className={"flex-1 sm:ml-20px px-15px py-15px"}>
           <div>
             <ProductInfo product={product} />
           </div>
@@ -92,12 +92,11 @@ const Product = ({ product }) => {
       </div>
       <div
         className={
-          "flex flex-col sm:flex-row mx-auto mb-15px sm:mb-30px px-15px "
+          "flex  flex-col sm:flex-row mx-auto mb-15px sm:mb-30px px-15px "
         }
       >
-        <section className={"flex-auto"}>
+        <section className={"max-w-760px w-full"}>
           <ProductDescription
-            className="flex-1"
             productDescriptionRef={productDescription}
             evaluationRef={evaluation}
             id="product-description"
@@ -105,7 +104,9 @@ const Product = ({ product }) => {
             reviews={reviews}
           />
         </section>
-        <section className={"sticky w-full top-100px self-start"}>
+        <section
+          className={"sticky flex-1 sm:ml-20px  w-full top-100px self-start"}
+        >
           <ShopInfo product={product} shopInfo={shopInfo} />
         </section>
       </div>

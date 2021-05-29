@@ -11,16 +11,14 @@ const Banner = ({ banners }) => {
     >
       <Swiper slidesPerView={1}>
         {banners.map((banner) => (
-          <div className="w-screen" key={banner.image}>
-            <SwiperSlide>
-              <Image
-                src={banner.image}
-                width={1100}
-                height={500}
-                layout="responsive"
-              />
-            </SwiperSlide>
-          </div>
+          <SwiperSlide className="w-screen" key={banner.image}>
+            <Image
+              src={banner.image}
+              width={1100}
+              height={500}
+              layout="responsive"
+            />
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>
