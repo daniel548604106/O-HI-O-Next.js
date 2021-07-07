@@ -8,6 +8,7 @@ module.exports = {
       "live.staticflickr.com",
       "i.redd.it",
       "64.media.tumblr.com",
+      "ik.imagekit.io",
       "img.alicdn.com",
       "muku-store.com",
       "cdn03.pinkoi.com",
@@ -21,7 +22,9 @@ module.exports = {
     REACT_APP_FACEBOOK_URI: process.env.REACT_APP_FACEBOOK_URI,
     REACT_APP_FACEBOOK_CLIENT_ID: process.env.REACT_APP_FACEBOOK_CLIENT_ID,
     REACT_APP_FACEBOOK_CLIENT_SECRET:
-      process.env.REACT_APP_FACEBOOK_CLIENT_SECRET,
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_FACEBOOK_URI
+        : "http://localhost:3000/oauth/facebook",
     REACT_APP_GOOGLE_URI: process.env.REACT_APP_GOOGLE_URI,
     REACT_APP_GOOGLE_ID: process.env.REACT_APP_GOOGLE_ID,
     REACT_APP_GOOGLE_SECRET: process.env.REACT_APP_GOOGLE_SECRET,
@@ -31,8 +34,7 @@ module.exports = {
     MONGO_URI: process.env.MONGO_URI,
     JWT_SECRET: process.env.JWT_SECRET,
   },
-  // Target must be serverless
-  target: "serverless",
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

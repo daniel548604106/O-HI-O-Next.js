@@ -28,12 +28,10 @@ const Shop = ({ shop }) => {
 
   return (
     <div>
-      <Banner shop={shop} />
+      {/* <Banner shop={shop} /> */}
       <div className="px-30px">
-        <ShopInfo shop={shop} />
-        <button class="transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:rotate-180 hover:scale-110 ...">
-          Hover me
-        </button>
+        {/* <ShopInfo shop={shop} /> */}
+        hihi
         {/* <Tabs tabs={tabs} /> */}
         {/* {activeTab === "product" && (
           <div>
@@ -63,25 +61,25 @@ export default Shop;
 
 // This function gets called at build time
 // 先取得所有資料的 id
-export async function getStaticPaths() {
-  const { shops } = (await apiGetAllShops()).data;
-  const paths = shops.map((item) => ({
-    params: { shop: item.account.toString() },
-  }));
-  console.log(paths);
-  return { paths, fallback: true };
-}
+// export async function getStaticPaths() {
+//   const { shops } = (await apiGetAllShops()).data;
+//   const paths = shops.map((item) => ({
+//     params: { shop: item.account.toString() },
+//   }));
+//   console.log(paths);
+//   return { paths, fallback: true };
+// }
 
-// This also gets called at build time
+// // This also gets called at build time
 
-export async function getStaticProps(context) {
-  const { shop } = JSON.parse(
-    JSON.stringify((await apiGetShopInfo(context.params.shop)).data)
-  );
-  console.log("shop", shop);
-  return {
-    props: {
-      shop,
-    },
-  };
-}
+// export async function getStaticProps(context) {
+//   const { shop } = JSON.parse(
+//     JSON.stringify((await apiGetShopInfo(context.params.shop)).data)
+//   );
+//   console.log("shop", shop);
+//   return {
+//     props: {
+//       shop,
+//     },
+//   };
+// }

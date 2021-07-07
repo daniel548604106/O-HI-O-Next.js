@@ -75,7 +75,6 @@ const Header = () => {
                   className="w-30px h-30px sm:w-40px sm:h-40px rounded-full"
                 />
               ) : (
-                // <div>{currentUser.name}</div>
                 <UserIcon
                   onClick={() => router.push("/login")}
                   className="h-5 sm:h-7 text-gray-700 hover:text-main-pink"

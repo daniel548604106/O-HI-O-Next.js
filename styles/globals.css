@@ -7,3 +7,11 @@ select,
 button {
   outline: none;
 }
+
+--tw-ring-color {
+  outline: none;
+}
+
+* {
+  outline: none;
+}

@@ -63,7 +63,7 @@ export default function Home({
         <meta name="theme-color" />
       </Head>
       <Banner banners={banners.banners} />
-      <main className="py-20px sm:py-50px max-w-1200px w-full mx-auto">
+      <main className="py-20px sm:py-50px max-w-6xl  w-full mx-auto">
         <section className="px-15px mb-20px sm:mb-50px">
           <ProductCardRow
             title={"推薦商品"}

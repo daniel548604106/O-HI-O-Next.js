@@ -28,7 +28,7 @@ const ShopInfo = ({ product, shopInfo }) => {
   };
   return (
     <div className="w-full">
-      <div className="w-full shadow-md p-20px rounded">
+      <div className="w-full  p-20px rounded">
         <h2 className="text-lg sm:text-2xl font-bold">關於設計館</h2>
         <div className="flex items-center py-20px">
           <img
@@ -43,13 +43,27 @@ const ShopInfo = ({ product, shopInfo }) => {
           </div>
         </div>
         {favoriteShops && (
-          <div className="flex p-10px w-full justify-between items-center rounded cursor-pointer">
+          <div className="flex  w-full justify-between items-center rounded cursor-pointer">
             {shopFollowed ? (
-              <Button title="關注中" Icon={CheckIcon} />
+              <Button
+                bgColor="text-main-pink text-sm"
+                textColor="text-white"
+                title="關注中"
+                Icon={CheckIcon}
+              />
             ) : (
-              <Button title="加入關注" Icon={PlusIcon} />
+              <Button
+                borderColor="text-main-pink mr-10px border-main-pink border rounded"
+                textColor="text-main-pink text-sm"
+                title="加入關注"
+                Icon={PlusIcon}
+              />
             )}
-            <Button title="聯絡店家" Icon={ChatAlt2Icon} />
+            <Button
+              borderColor="text-light-blue text-sm border-light-blue border rounded"
+              title="聯絡店家"
+              Icon={ChatAlt2Icon}
+            />
           </div>
         )}
         <div>
