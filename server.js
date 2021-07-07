@@ -26,7 +26,6 @@ if (process.env.NODE_ENV === "production") {
 
 connectDB()
   .then(() => {
-    console.log("dbConnected");
     nextApp.prepare().then(() => {
       // routes
       app.use("/api/v1/oauth", require("./routes/oAuthRoute"));
