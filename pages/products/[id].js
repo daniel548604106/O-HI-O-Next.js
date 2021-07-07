@@ -142,10 +142,3 @@ export async function getStaticProps(context) {
 }
 
 export default Product;
-// import React from "react";
-
-// const Product = () => {
-//   return <div>hi</div>;
-// };
-
-// export default Product;
