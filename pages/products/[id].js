@@ -44,7 +44,7 @@ const Product = ({ product }) => {
   }, []);
   // Show Banner
   useEffect(() => {
-    window.addEventListener("scroll", function () {
+    function showBanner() {
       console.log(window.pageYOffset);
 
       if (window.pageYOffset > 400) {
@@ -52,7 +52,12 @@ const Product = ({ product }) => {
       } else {
         setShowBanner(false);
       }
-    });
+    }
+
+    window.addEventListener("scroll", showBanner);
+    return () => {
+      window.addEventListener("scroll", showBanner);
+    };
   }, []);
   // Fetch Reviews
 
