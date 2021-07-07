@@ -3,6 +3,7 @@ const Shop = require("../models/shopModel");
 const getShops = async (req, res) => {
   try {
     const shops = await Shop.find();
+    console.log(shops, "shops");
     res.status(200).json({
       shops,
     });
@@ -35,7 +36,7 @@ const addNewShop = async (req, res) => {
 const getHotShop = async (req, res) => {
   try {
     const shop = await Shop.find().limit(10);
-
+    console.log("shop", shop);
     res.status(200).json({
       shop,
     });
