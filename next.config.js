@@ -8,6 +8,7 @@ module.exports = {
       "live.staticflickr.com",
       "i.redd.it",
       "64.media.tumblr.com",
+      "ik.imagekit.io",
       "img.alicdn.com",
       "muku-store.com",
       "cdn03.pinkoi.com",
