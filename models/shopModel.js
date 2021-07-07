@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+
 const shopSchema = new mongoose.Schema(
   {
     banner: {
@@ -42,8 +43,6 @@ const shopSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-mongoose.models = {};
 
 shopSchema.virtual("products", {
   ref: "Product",

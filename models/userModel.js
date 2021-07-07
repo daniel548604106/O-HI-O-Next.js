@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
@@ -76,10 +76,8 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-mongoose.models = {};
-
-userSchema.methods.matchPassword = function (enteredPassword) {
-  return bcrypt.compare(enteredPassword, this.password);
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 userSchema.pre("save", async function (next) {
   // 如果今天使用者更改其他個人資訊但沒有做密碼更改，就直接 save
