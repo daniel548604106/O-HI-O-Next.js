@@ -2,7 +2,7 @@ const axios = require("axios");
 const qs = require("query-string");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
-const generateToken = require("../tools/generateToken");
+const generateToken = require("../utils/generateToken");
 
 const authSignup = async (req, res, next) => {
   try {

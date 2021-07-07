@@ -18,7 +18,7 @@ export default function Home({
   recommendedProducts,
   discountedProducts,
   editorPickedProducts,
-  popularShops,
+  // popularShops,
 }) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -82,9 +82,9 @@ export default function Home({
             products={editorPickedProducts.products}
           />
         </section>
-        <section className="px-15px mb-20px sm:mb-50px">
+        {/* <section className="px-15px mb-20px sm:mb-50px">
           <ShopCardRow shops={popularShops} />
-        </section>
+        </section> */}
       </main>
     </div>
   );
@@ -101,9 +101,9 @@ export async function getServerSideProps() {
   const editorPickedProducts = JSON.parse(
     JSON.stringify((await apiGetEditorPickedProducts()).data)
   );
-  const popularShops = JSON.parse(
-    JSON.stringify((await apiGetPopularShops()).data.shops)
-  );
+  // const popularShops = JSON.parse(
+  //   JSON.stringify((await apiGetPopularShops()).data.shops)
+  // );
   const banners = JSON.parse(JSON.stringify(res.data));
   return {
     props: {
@@ -111,7 +111,7 @@ export async function getServerSideProps() {
       recommendedProducts,
       discountedProducts,
       editorPickedProducts,
-      popularShops,
+      // popularShops,
     },
   };
 }

@@ -31,6 +31,18 @@ const getDiscountedProducts = async (req, res, next) => {
     console.log(error);
   }
 };
+const getEditorPickedProducts = async (req, res, next) => {
+  try {
+    console.log("editorPicked");
+    const products = await Product.find({ discountPrice: { $ne: null } });
+    // console.log('discount',products)
+    res.status(200).json({
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const getSearchedProducts = async (req, res) => {
   try {
@@ -108,5 +120,6 @@ module.exports = {
   getSearchedProducts,
   getProduct,
   getCollectionProducts,
+  getEditorPickedProducts,
   getDiscountedProducts,
 };
