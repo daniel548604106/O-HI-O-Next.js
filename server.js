@@ -12,7 +12,7 @@ const next = require("next");
 const nextApp = next({ dev });
 
 const handle = nextApp.getRequestHandler();
-const dbConnect = require("./utils/mongoDB");
+const connectDB = require("./utils/mongoDB");
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,21 +24,22 @@ if (process.env.NODE_ENV === "production") {
   console.log = function () {};
 }
 
-dbConnect()
+connectDB()
   .then(() => {
+    console.log("dbConnected");
     nextApp.prepare().then(() => {
       // routes
-      app.use("/v1/oauth", oAuthRoute);
-      app.use("/v1/products", productRoute);
-      app.use("/v1/auth", authRoute);
-      app.use("/v1/users", userRoute);
-      app.use("/v1/banners", bannerRoute);
-      app.use("/v1/reviews", reviewRoute);
-      app.use("/v1/favorite", favoriteRoute);
-      app.use("/v1/shops", shopRoute);
-      app.use("/v1/my", myRoute);
-      app.use("/v1/chat", chatRoute);
-      app.use("/v1/orders", orderRoute);
+      app.use("/api/v1/oauth", require("./routes/oAuthRoute"));
+      app.use("/api/v1/products", require("./routes/productRoute"));
+      app.use("/api/v1/auth", require("./routes/authRoute"));
+      app.use("/api/v1/users", require("./routes/userRoute"));
+      app.use("/api/v1/banners", require("./routes/bannerRoute"));
+      app.use("/api/v1/reviews", require("./routes/reviewRoute"));
+      app.use("/api/v1/favorite", require("./routes/favoriteRoute"));
+      app.use("/api/v1/shops", require("./routes/shopRoute"));
+      app.use("/api/v1/my", require("./routes/myRoute"));
+      app.use("/api/v1/chat", require("./routes/chatRoute"));
+      app.use("/api/v1/orders", require("./routes/orderRoute"));
       app.all("*", (req, res) => handle(req, res));
 
       server.listen(PORT, (err) => {

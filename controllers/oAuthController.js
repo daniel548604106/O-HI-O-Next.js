@@ -3,7 +3,7 @@ const qs = require("query-string");
 const jwt = require("jsonwebtoken");
 const jwtDecode = require("jwt-decode");
 const User = require("../models/userModel");
-const generateToken = require("../tools/generateToken");
+const generateToken = require("../utils/generateToken");
 
 const oAuth = async (req, res, next) => {
   try {

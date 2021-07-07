@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-const { upload } = require("../tools/upload");
+const { uploadUserAvatar } = require("../utils/upload");
 
 const patchMyData = async (req, res) => {
   try {
