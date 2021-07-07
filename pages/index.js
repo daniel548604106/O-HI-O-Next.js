@@ -18,18 +18,26 @@ export default function Home({
   recommendedProducts,
   discountedProducts,
   editorPickedProducts,
-  popularShops,
 }) {
   const dispatch = useDispatch();
+  const [popularShops, setPopularShops] = useState([]);
   useEffect(() => {
     if (Cookie.get("token") !== undefined) {
       console.log("set");
       dispatch(getFavList());
     }
   }, [Cookie.get("token")]);
+  const getPopularShops = async () => {
+    try {
+      const { data } = await apiGetPopularShops();
+      setPopularShops(data.shop);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    console.log(popularShops, "sop");
+    getPopularShops();
   }, []);
   return (
     <div>
@@ -94,7 +102,7 @@ export default function Home({
 }
 
 export async function getServerSideProps() {
-  const res = await apiGetBanners();
+  const banners = JSON.parse(JSON.stringify((await apiGetBanners()).data));
   const recommendedProducts = JSON.parse(
     JSON.stringify((await apiGetRecommendedProducts()).data)
   );
@@ -104,17 +112,17 @@ export async function getServerSideProps() {
   const editorPickedProducts = JSON.parse(
     JSON.stringify((await apiGetEditorPickedProducts()).data)
   );
-  const popularShops = JSON.parse(
-    JSON.stringify((await apiGetPopularShops()).data.shop)
-  );
-  const banners = JSON.parse(JSON.stringify(res.data));
+  // const popularShops = JSON.parse(
+  //   JSON.stringify((await apiGetPopularShops()).data.shop)
+  // );
+
   return {
     props: {
       banners,
       recommendedProducts,
       discountedProducts,
       editorPickedProducts,
-      popularShops,
+      // popularShops,
     },
   };
 }
