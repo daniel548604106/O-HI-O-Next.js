@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema(
   {
     publishedBy: {
       type: mongoose.Types.ObjectId,
-      ref: "shops",
+      ref: "Shop",
     },
     name: {
       type: String,
@@ -59,8 +59,6 @@ const productSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-mongoose.models = {};
 
 productSchema.index({ name: "text", description: "text" });
 
