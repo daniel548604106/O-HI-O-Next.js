@@ -20,6 +20,9 @@ const Header = () => {
   };
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const currentUser = useSelector((state) => state.user.currentUser);
+  const totalItems = useSelector((state) => state.cart.cartItems)
+    .map((item) => item.quantity)
+    .reduce((total, current) => total + current);
   return (
     <header className="border-b  px-15px ">
       <div className=" max-w-6xl h-60px mx-auto flex items-center justify-between">
@@ -36,22 +39,21 @@ const Header = () => {
             src="/images/O.HI.O-logo.svg"
             width={100}
             height={50}
-            layout="fixed"
             priority={true}
           />
 
-          {/* <div className="ml-10px sm:ml-20px relative ">
+          <span className="ml-10px  sm:ml-20px flex items-center p-1 sm:px-2 rounded-full sm:rounded bg-gray-100">
+            <SearchIcon className="text-gray-600 h-5" />
             <input
               placeholder="搜尋商品"
               type="search"
-              className=" bg-gray-100 rounded text-sm sm:text-md p-10px pl-20px sm:pl-50px  ml-5"
+              className=" hidden sm:block bg-gray-100 rounded text-xs sm:text-sm p-1"
             />
-            <SearchIcon className="text-gray-600 h-5 absolute left-30px top-1/2 transform -translate-y-1/2" />
-          </div> */}
+          </span>
         </div>
         <nav>
           <ul className="flex items-center ml-5">
-            <li className="hidden whitespace-nowrap sm:block px-5 mr-4 text-main-pink border-dashed border-2 border-main-pink  py-2 rounded-md cursor-pointer  hover:border-light-blue hover:text-light-blue">
+            <li className="hidden whitespace-nowrap md:block text-sm sm:text-md py-1 sm:py-2  px-5 mr-4 text-main-pink border-dashed border-2 border-main-pink rounded-md cursor-pointer  hover:border-light-blue hover:text-light-blue">
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
@@ -72,7 +74,7 @@ const Header = () => {
                 <img
                   onClick={() => router.push("/my")}
                   src={currentUser.picture}
-                  className="w-30px h-30px sm:w-40px sm:h-40px rounded-full"
+                  className="min-w-30px w-30px h-30px  sm:w-40px sm:h-40px rounded-full"
                 />
               ) : (
                 <UserIcon
@@ -81,7 +83,13 @@ const Header = () => {
                 />
               )}
             </li>
-            <li className="px-2 cursor-pointer " onClick={() => toCart()}>
+            <li
+              className="px-2 cursor-pointer relative "
+              onClick={() => toCart()}
+            >
+              <span className="absolute top-0 transform -translate-y-1 min-w-20px min-h-20px flex items-center justify-center right-0 bg-main-pink text-white rounded-full text-xs sm:text-xs">
+                {totalItems}
+              </span>
               <ShoppingBagIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
             </li>
           </ul>

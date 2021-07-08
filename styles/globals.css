@@ -8,6 +8,10 @@ button {
   outline: none;
 }
 
+button:focus {
+  outline: none;
+}
+
 --tw-ring-color {
   outline: none;
 }

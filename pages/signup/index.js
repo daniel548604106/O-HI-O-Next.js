@@ -18,9 +18,8 @@ const SignUp = ({ setLoginState }) => {
       Cookie.set("token", data.token);
       dispatch(closeLoginModal());
       dispatch(setUserLoggedIn(data));
-      notify("登入成功！");
     } catch (error) {
-      notify("登入失敗！請重新再試一次");
+      console.log("error", error);
     }
   };
   return (

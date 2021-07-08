@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
             <Header />
           </div>
           <SideMenu />
-          <Component {...pageProps} />;
+          <Component {...pageProps} />
           <Footer />
         </PersistGate>
       </Provider>
