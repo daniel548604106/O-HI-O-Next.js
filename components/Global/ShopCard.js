@@ -24,6 +24,9 @@ const ShopCard = ({ shop }) => {
   };
   const [followedFavoriteShop, setFollowedFavoriteShop] = useState(-1);
 
+  const toShop = () => {
+    router.push(`/shops/${shop.account}?tab=product`);
+  };
   useEffect(() => {
     if (!favoriteShops) return;
     const checkFollowedShop = () => {
@@ -37,14 +40,7 @@ const ShopCard = ({ shop }) => {
 
   return (
     <div className="overflow-x-auto border-1 border-gray-400 hover:opacity-70">
-      <div
-        onClick={() => {
-          router.push({
-            pathname: "/shops/[shop]",
-            query: { shop: shop.account, tab: "product" },
-          });
-        }}
-      >
+      <div onClick={() => toShop()}>
         <div className="flex cursor-pointer ">
           <div className="flex-auto">
             <img
