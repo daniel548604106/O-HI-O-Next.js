@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Browse/SideBar";
+// import Sidebar from "../../components/Browse/SideBar.js";
 import Products from "../../components/Browse/Products";
 import FilterOverlay from "../../components/Browse/FilterOverlay";
 import { menuOptions } from "../../lib/menuOptions";
@@ -47,9 +47,9 @@ const Browse = () => {
       <div>
         <FilterOverlay setFilterShow={setFilterShow} />
       </div>
-      <div>
+      {/* <div>
         <Sidebar categoryId={categoryId} />
-      </div>
+      </div> */}
       <div>
         <Products
           setFilterShow={setFilterShow}
