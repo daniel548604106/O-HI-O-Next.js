@@ -43,6 +43,7 @@ module.exports = {
       },
 
       width: {
+        "20px": "20px",
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",
@@ -55,6 +56,7 @@ module.exports = {
         "250px": "250px",
         "300px": "300px",
         "500px": "500px",
+        "20%": "20%",
         "30%": "30%",
         "50%": "50%",
         "60%": "60%",
@@ -95,6 +97,7 @@ module.exports = {
         "90vh": "90vh",
       },
       height: {
+        "20px": "20px",
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",
@@ -114,6 +117,7 @@ module.exports = {
         "90vh": "90vh",
       },
       minHeight: {
+        "20px": "20px",
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",
@@ -130,6 +134,7 @@ module.exports = {
       },
       minWidth: {
         "10px": "10px",
+        "20px": "20px",
         "30px": "30px",
         "40px": "40px",
         "50px": "50px",

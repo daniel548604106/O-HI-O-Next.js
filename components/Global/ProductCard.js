@@ -48,9 +48,10 @@ const ProductCard = ({ product, favoriteProductIds }) => {
         <div className=" relative hover:opacity-70">
           <div className="relative">
             <Image
-              className="min-h-150px w-150px sm:min-w-200px sm:min-h-200px"
-              width={200}
-              height={200}
+              className=""
+              width={400}
+              height={400}
+              layout="responsive"
               src={product.images[0]}
               alt={product.name}
             />

@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
-const Tabs = ({ tabs }) => {
+const Tabs = ({ tabs, setActiveTab }) => {
   const router = useRouter();
+  useEffect(() => {
+    console.log(router);
+  }, []);
   const switchTab = (tab) => {
-    router.push(`${router.pathname}?tab=${tab}`);
+    router.push(`/shops/${router.query.id}?tab=${tab}`, undefined, {
+      shallow: true,
+    });
   };
 
-  useEffect(() => {
-    switchTab();
-  }, []);
   return (
     <div className="flex items-end w-full border-b-1 border-bg-white">
       {tabs.map((tab) => (

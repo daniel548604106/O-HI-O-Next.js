@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { formatDate } from "../../../lib/tool";
+import { formatDate } from "../../lib/tool";
 import { useSelector, useDispatch } from "react-redux";
-import { addToFavorite } from "../../../redux/actions/globalAction";
+import { addToFavorite } from "../../redux/actions/globalAction";
 const ShopInfo = ({ shop }) => {
   const { user } = shop;
   const dispatch = useDispatch();
@@ -36,28 +36,24 @@ const ShopInfo = ({ shop }) => {
                 <span>288</span>
               </div>
             </div>
-            {/* {favoriteShops.find(
+            {favoriteShops.find(
               (favoriteShop) => favoriteShop._id === shop._id
             ) ? (
-              <div
-                onClick={() => handleFavorite(shop._id)}
-                className={classes.cta}
-              >
-                <Button
+              <div onClick={() => handleFavorite(shop._id)}>
+                {/* <Button
                   text="關注中"
                   backgroundColor="white"
                   border="true"
                   color="black"
-                />
+                /> */}
+                <button>關注中</button>
               </div>
             ) : (
-              <div
-                onClick={() => handleFavorite(shop._id)}
-                className={classes.cta}
-              >
-                <Button text="加入關注" iconType="add" />
+              <div onClick={() => handleFavorite(shop._id)}>
+                {/* <Button text="加入關注" iconType="add" /> */}
+                <button>加入關注</button>
               </div>
-            )} */}
+            )}
           </div>
           <div>
             <div className="flex items-center">

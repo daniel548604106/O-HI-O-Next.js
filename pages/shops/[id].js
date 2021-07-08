@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Tabs from "../../components/Global/Tabs";
-import RefundPolicy from "../../components/Shops/Shop/RefundPolicy";
-import ShopInfo from "../../components/Shops/Shop/ShopInfo";
-import Banner from "../../components/Shops/Shop/Banner";
-import ProductList from "../../components/Shops/Shop/ProductList";
-import SideBar from "../../components/Shops/Shop/SideBar";
-import RecommendedDesign from "../../components/Shops/Shop/RecommendedDesign";
+import RefundPolicy from "../../components/Shop/RefundPolicy";
+import ShopInfo from "../../components/Shop/ShopInfo";
+import Banner from "../../components/Shop/Banner";
+import ProductList from "../../components/Shop/ProductList";
+import SideBar from "../../components/Shop/SideBar";
+import RecommendedDesign from "../../components/Shop/RecommendedDesign";
 import { apiGetShopInfo, apiGetAllShops } from "../../api/index";
 import { useRouter } from "next/router";
 const tabs = [
@@ -25,33 +25,38 @@ const tabs = [
 const Shop = ({ shop }) => {
   const router = useRouter();
   const [shopInfo, setShopInfo] = useState({});
+  const [activeTab, setActiveTab] = useState("product");
+  useEffect(() => {
+    console.log(shop);
+  }, [shop]);
 
   return (
     <div>
-      {/* <Banner shop={shop} /> */}
+      <Banner shop={shop} />
       <div className="px-30px">
-        {/* <ShopInfo shop={shop} /> */}
-        hihi
-        {/* <Tabs tabs={tabs} /> */}
-        {/* {activeTab === "product" && (
+        <ShopInfo shop={shop} />
+        <Tabs tabs={tabs} setActiveTab={setActiveTab} />
+        {activeTab === "product" && (
           <div>
-            <RecommendedDesign pinnedProducts={shopInfo.pinnedProducts} />
+            <RecommendedDesign pinnedProducts={shop.pinnedProducts} />
             <div className="flex py-20px">
-              <SideBar />
+              <div className="hidden sm:block w-20% min-w-200px mr-3">
+                <SideBar />
+              </div>
               <div className="flex-1">
-                <ProductList products={shopInfo.products} />
+                <ProductList products={shop.products} />
               </div>
             </div>
           </div>
         )}
-        {activeTab === "story" && (
+        {router.query.tab === "story" && (
           <div className="max-w-760px w-full mx-auto mt-50px mb-100px">
-            <p className="text-md text-gray-800"> {shopInfo.story}</p>
+            <p className="text-md text-gray-800">{shop.story}</p>
           </div>
         )}
         <div className="w-800px mx-auto">
           {activeTab === "policy" && <RefundPolicy />}
-        </div> */}
+        </div>
       </div>
     </div>
   );
@@ -61,25 +66,25 @@ export default Shop;
 
 // This function gets called at build time
 // 先取得所有資料的 id
-// export async function getStaticPaths() {
-//   const { shops } = (await apiGetAllShops()).data;
-//   const paths = shops.map((item) => ({
-//     params: { shop: item.account.toString() },
-//   }));
-//   console.log(paths);
-//   return { paths, fallback: true };
-// }
+export async function getStaticPaths() {
+  const { shops } = (await apiGetAllShops()).data;
+  const paths = shops.map((item) => ({
+    params: { id: item.account.toString() },
+  }));
+  console.log(paths);
+  return { paths, fallback: true };
+}
 
-// // This also gets called at build time
+// This also gets called at build time
 
-// export async function getStaticProps(context) {
-//   const { shop } = JSON.parse(
-//     JSON.stringify((await apiGetShopInfo(context.params.shop)).data)
-//   );
-//   console.log("shop", shop);
-//   return {
-//     props: {
-//       shop,
-//     },
-//   };
-// }
+export async function getStaticProps(context) {
+  const { shop } = JSON.parse(
+    JSON.stringify((await apiGetShopInfo(context.params.id)).data)
+  );
+  console.log("shop", shop);
+  return {
+    props: {
+      shop,
+    },
+  };
+}
