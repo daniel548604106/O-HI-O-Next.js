@@ -14,7 +14,7 @@ const OAuth = () => {
     const postOauthLogin = async () => {
       console.log("started");
       try {
-        const { data } = await apiPostOauthLogin({ provider, code });
+        const { data } = await apiPostOauthLogin({ type: provider, code });
         Cookie.set("me", data.user);
         Cookie.set("token", data.token);
         router.push("/");

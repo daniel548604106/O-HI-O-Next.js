@@ -36,18 +36,17 @@ const Header = () => {
             src="/images/O.HI.O-logo.svg"
             width={100}
             height={50}
-            layout="fixed"
             priority={true}
           />
 
-          {/* <div className="ml-10px sm:ml-20px relative ">
+          <span className="ml-10px  sm:ml-20px flex items-center p-1 sm:px-2 rounded-full sm:rounded bg-gray-100">
+            <SearchIcon className="text-gray-600 h-5" />
             <input
               placeholder="搜尋商品"
               type="search"
-              className=" bg-gray-100 rounded text-sm sm:text-md p-10px pl-20px sm:pl-50px  ml-5"
+              className=" hidden sm:block bg-gray-100 rounded text-xs sm:text-sm p-1"
             />
-            <SearchIcon className="text-gray-600 h-5 absolute left-30px top-1/2 transform -translate-y-1/2" />
-          </div> */}
+          </span>
         </div>
         <nav>
           <ul className="flex items-center ml-5">
@@ -72,7 +71,7 @@ const Header = () => {
                 <img
                   onClick={() => router.push("/my")}
                   src={currentUser.picture}
-                  className="w-30px h-30px sm:w-40px sm:h-40px rounded-full"
+                  className="min-w-30px w-30px h-30px  sm:w-40px sm:h-40px rounded-full"
                 />
               ) : (
                 <UserIcon

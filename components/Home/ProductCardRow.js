@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../Global/ProductCard";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import router from "next/router";
 const ProductCardRow = ({ title, products }) => {
   const [favoriteProductIds, setFavoriteProductIds] = useState([]);
   const favoriteProducts = useSelector(
@@ -18,9 +19,15 @@ const ProductCardRow = ({ title, products }) => {
 
   return (
     <>
-      <h1 className="font-semibold mb-10px sm:mb-20px text-lg sm:text-2xl">
-        {title}
-      </h1>
+      <div className="flex items-center mb-10px sm:mb-20px justify-between">
+        <h1 className="font-semibold  text-lg sm:text-2xl">{title}</h1>
+        <span
+          onClick={() => router.push("/browse")}
+          className="text-sm lg:text-md text-main-pink cursor-pointer"
+        >
+          查看更多
+        </span>
+      </div>
       <div className="flex items-center scrollbar-hide overflow-scroll whitespace-nowrap">
         {products.map((product) => (
           <div
