@@ -4,19 +4,6 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import router from "next/router";
 const ProductCardRow = ({ title, products }) => {
-  const [favoriteProductIds, setFavoriteProductIds] = useState([]);
-  const favoriteProducts = useSelector(
-    (state) => state.global.favoriteProducts
-  );
-
-  useEffect(() => {
-    let ids = favoriteProducts.map((product) => {
-      return product._id;
-    });
-    setFavoriteProductIds(ids);
-    console.log(favoriteProductIds);
-  }, [favoriteProducts]);
-
   return (
     <>
       <div className="flex items-center mb-10px sm:mb-20px justify-between">
@@ -34,10 +21,7 @@ const ProductCardRow = ({ title, products }) => {
             key={product._id}
             className="mr-10px w-150px min-w-150px sm:min-w-200px "
           >
-            <ProductCard
-              product={product}
-              favoriteProductIds={favoriteProductIds}
-            />
+            <ProductCard product={product} />
           </div>
         ))}
       </div>

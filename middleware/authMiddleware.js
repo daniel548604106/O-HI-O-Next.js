@@ -13,7 +13,6 @@ const protect = async (req, res, next) => {
       req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
-      console.log(token);
       // Check Social Account
       //  const email = (jwtDecode(token).email)
       //  console.log('email',email)
@@ -37,6 +36,7 @@ const protect = async (req, res, next) => {
   } catch (error) {
     res.status(403).json({
       message: "token invalid",
+      error,
     });
   }
   // check if token exists in headers

@@ -10,72 +10,27 @@ import Image from "next/image";
 const ProductCard = ({ product, favoriteProductIds }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [saved, setSaved] = useState(false);
-  const [savedList, setSavedList] = useState([]);
-  const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
+  const { isUserLoggedIn } = useSelector((state) => state.user);
+  const { favoriteProducts } = useSelector((state) => state.global);
+
+  const [saved, setSaved] = useState(
+    favoriteProducts.map((product) => product._id).includes(product._id)
+  );
+
   const directToProduct = () => {
     router.push(`/products/${product._id}`);
   };
-  useEffect(() => {
-    setSavedList(favoriteProductIds);
-  }, [favoriteProductIds]);
-
-  // useEffect(() => {
-  //   if (product) {
-  //     if (savedList.includes(product._id)) {
-  //       setSaved(true);
-  //     } else {
-  //       setSaved(false);
-  //     }
-  //   }
-  // }, [savedList, favoriteProductIds]);
-  // useEffect(() => {
-  //   let products = favoriteProducts.map((product) => {
-  //     return product._id;
-  //   });
-  //   setFavoriteListIds(products);
-  //   console.log(favoriteListIds);
-  // }, [favoriteProducts]);
-
-  // useEffect(() => {
-  //   if (favoriteListIds.find(product._id)) {
-  //     setSaved(true);
-  //   } else {
-  //     setSaved(false);
-  //   }
-  // }, [favoriteListIds]);
-
-  // const addItemToFavorite = (e, id) => {
-  //   e.stopPropagation();
-  //   if (isUserLoggedIn) {
-  //     const type = "product";
-  //     dispatch(addToFavorite(id, type));
-  //     return;
-  //   }
-  //   router.push("/login");
-  // };
-
-  const toggleHeartIcon = (id) => {
-    console.log(savedList);
-    // if (savedList.includes(id)) {
-    //   console.log("hi");
-    // } else {
-    setSavedList((prevState) => {
-      return { ...prevState, id };
-    });
-    // }
+  const toggleHeartIcon = (e, id) => {
+    e.stopPropagation();
+    if (isUserLoggedIn) {
+      setSaved(!saved);
+      const type = "product";
+      dispatch(addToFavorite(id, type));
+      return;
+    } else {
+      router.push("/login");
+    }
   };
-  // useEffect(() => {
-  //   if (!favoriteProducts) return;
-  //   const searchFavorite = () => {
-  //     const productIds = favoriteProducts.map((item) => {
-  //       return item._id;
-  //     });
-  //     // setAddedFavorite(productIds.indexOf(product._id));
-  //   };
-  //   searchFavorite();
-  // }, [favoriteProducts]);
-
   return (
     <div
       onClick={() => directToProduct()}
@@ -101,12 +56,12 @@ const ProductCard = ({ product, favoriteProductIds }) => {
             />
             {saved ? (
               <HeartSolidIcon
-                onClick={() => toggleHeartIcon(product._id)}
-                className={`text-main-pink h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 `}
+                onClick={(e) => toggleHeartIcon(e, product._id)}
+                className={` text-main-pink h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 `}
               />
             ) : (
               <HeartIcon
-                onClick={() => toggleHeartIcon(product._id)}
+                onClick={(e) => toggleHeartIcon(e, product._id)}
                 className={`text-white h-5 sm:h-7 absolute bottom-10px cursor-pointer right-10px hover:text-gray-700 `}
               />
             )}
@@ -130,7 +85,7 @@ const ProductCard = ({ product, favoriteProductIds }) => {
                   className={`
                     mr-5px text-sm text-gray-600
                     ${!product.discountPrice && "text-md text-main-pink"}
-                    ${product.discountPrice ? "line-through" : ""}
+                    ${product.discountPrice ? "line-through ml-1" : ""}
                   `}
                 >
                   ${product.fullPrice}
