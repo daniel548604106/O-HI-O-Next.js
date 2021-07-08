@@ -23,9 +23,7 @@ const ShopCard = ({ shop }) => {
     dispatch(openLoginModal());
   };
   const [followedFavoriteShop, setFollowedFavoriteShop] = useState(-1);
-  const toShop = (shop) => {
-    router.push(`/shops/${shop}?tab=products`);
-  };
+
   useEffect(() => {
     if (!favoriteShops) return;
     const checkFollowedShop = () => {
@@ -43,7 +41,7 @@ const ShopCard = ({ shop }) => {
         onClick={() => {
           router.push({
             pathname: "/shops/[shop]",
-            query: { shop: shop.account },
+            query: { shop: shop.account, tab: "product" },
           });
         }}
       >

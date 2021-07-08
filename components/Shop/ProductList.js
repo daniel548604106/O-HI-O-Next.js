@@ -60,7 +60,7 @@ const ProductList = ({ products }) => {
   return (
     <div className="space-y-3">
       <Filter />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6  gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5  gap-4">
         {products &&
           products.map((product) => (
             <span key={product._id}>

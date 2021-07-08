@@ -12,6 +12,7 @@ module.exports = {
       "ik.imagekit.io",
       "img.alicdn.com",
       "muku-store.com",
+      "profile.line-scdn.net",
       "cdn03.pinkoi.com",
       "64.media.tumblr.com",
       "craftbagth.com",

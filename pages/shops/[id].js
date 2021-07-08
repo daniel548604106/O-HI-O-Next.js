@@ -30,13 +30,16 @@ const Shop = ({ shop }) => {
     console.log(shop);
   }, [shop]);
 
+  useEffect(() => {
+    console.log(router.query.tab);
+  }, [router.query.tab]);
   return (
     <div>
       <Banner shop={shop} />
-      <div className="px-30px">
+      <main className="px-30px max-w-1200px mx-auto">
         <ShopInfo shop={shop} />
         <Tabs tabs={tabs} setActiveTab={setActiveTab} />
-        {activeTab === "product" && (
+        {router.query.tab === "product" && (
           <div>
             <RecommendedDesign pinnedProducts={shop.pinnedProducts} />
             <div className="flex py-20px">
@@ -54,10 +57,12 @@ const Shop = ({ shop }) => {
             <p className="text-md text-gray-800">{shop.story}</p>
           </div>
         )}
-        <div className="w-800px mx-auto">
-          {activeTab === "policy" && <RefundPolicy />}
-        </div>
-      </div>
+        {router.query.tab === "policy" && (
+          <div className="w-800px mx-auto">
+            <RefundPolicy shop={shop} />
+          </div>
+        )}
+      </main>
     </div>
   );
 };

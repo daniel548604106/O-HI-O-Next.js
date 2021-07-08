@@ -53,7 +53,7 @@ const Header = () => {
         </div>
         <nav>
           <ul className="flex items-center ml-5">
-            <li className="hidden whitespace-nowrap sm:block px-5 mr-4 text-main-pink border-dashed border-2 border-main-pink  py-2 rounded-md cursor-pointer  hover:border-light-blue hover:text-light-blue">
+            <li className="hidden whitespace-nowrap md:block text-sm sm:text-md py-1 sm:py-2  px-5 mr-4 text-main-pink border-dashed border-2 border-main-pink rounded-md cursor-pointer  hover:border-light-blue hover:text-light-blue">
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
