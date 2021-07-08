@@ -20,9 +20,14 @@ const Header = () => {
   };
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
   const currentUser = useSelector((state) => state.user.currentUser);
-  const totalItems = useSelector((state) => state.cart.cartItems)
-    .map((item) => item.quantity)
-    .reduce((total, current) => total + current);
+  const { cartItems } = useSelector((state) => state.cart);
+  const totalItems =
+    cartItems === []
+      ? 0
+      : cartItems
+          .map((item) => item.quantity)
+          .reduce((total, current) => total + current, 0);
+
   return (
     <header className="border-b  px-15px ">
       <div className=" max-w-6xl h-60px mx-auto flex items-center justify-between">
@@ -87,9 +92,11 @@ const Header = () => {
               className="px-2 cursor-pointer relative "
               onClick={() => toCart()}
             >
-              <span className="absolute top-0 transform -translate-y-1 min-w-20px min-h-20px flex items-center justify-center right-0 bg-main-pink text-white rounded-full text-xs sm:text-xs">
-                {totalItems}
-              </span>
+              {totalItems > 0 && (
+                <span className="absolute top-0 transform -translate-y-1 min-w-20px min-h-20px flex items-center justify-center right-0 bg-main-pink text-white rounded-full text-xs sm:text-xs">
+                  {totalItems}
+                </span>
+              )}
               <ShoppingBagIcon className="h-5 sm:h-7 text-gray-700 hover:text-main-pink" />
             </li>
           </ul>
