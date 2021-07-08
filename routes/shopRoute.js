@@ -10,7 +10,7 @@ const {
 } = require("../controllers/shopController");
 const { protect } = require("../middleware/authMiddleware");
 
-router.route("/").post(protect, addNewShop).get(getAllShops);
+router.route("/").get(getAllShops).post(protect, addNewShop);
 router.route("/popular").get(getHotShop);
 router.route("/shop/:account/products").get(getProductsFromShop);
 router.route("/shop/:account").get(getShopInfo);
