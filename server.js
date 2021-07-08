@@ -34,7 +34,7 @@ connectDB()
       app.use("/api/v1/users", require("./routes/userRoute"));
       app.use("/api/v1/banners", require("./routes/bannerRoute"));
       app.use("/api/v1/reviews", require("./routes/reviewRoute"));
-      app.use("/api/v1/favorite", require("./routes/favoriteRoute"));
+      app.use("/api/v1/favorites", require("./routes/favoriteRoute"));
       app.use("/api/v1/shops", require("./routes/shopRoute"));
       app.use("/api/v1/my", require("./routes/myRoute"));
       app.use("/api/v1/chat", require("./routes/chatRoute"));

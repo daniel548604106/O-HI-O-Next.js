@@ -8,6 +8,7 @@ const generateToken = require("../utils/generateToken");
 const oAuth = async (req, res, next) => {
   try {
     const { type, code } = req.body;
+    console.log("type", type, code);
     let email;
     let name;
     let picture;
@@ -72,7 +73,7 @@ const oAuth = async (req, res, next) => {
         );
         console.log(google_res);
         const google_userInfo = jwtDecode(google_res.data.id_token);
-        console.log(google_userInfo);
+        console.log(google_userInfo, "info");
         email = google_userInfo.email;
         name = google_userInfo.name;
         picture = google_userInfo.picture;
@@ -99,6 +100,8 @@ const oAuth = async (req, res, next) => {
         console.log("verified", verified.data);
         console.log("picture", verified.data.picture);
         break;
+      default:
+        console.log("not");
     }
     console.log("email", email);
 

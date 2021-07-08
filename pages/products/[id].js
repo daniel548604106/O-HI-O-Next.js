@@ -86,7 +86,7 @@ const Product = ({ product }) => {
         <section ref={topDisplay} className={"w-full max-w-760px"}>
           <ProductDisplay product={product} />
         </section>
-        <section className={"w-full sm:w-60% sm:ml-20px px-15px py-15px"}>
+        <section className="w-full sm:w-60% sm:ml-20px px-15px py-15px">
           <div>
             <ProductInfo product={product} />
           </div>
@@ -95,12 +95,8 @@ const Product = ({ product }) => {
           </div>
         </section>
       </div>
-      <div
-        className={
-          "flex  flex-col sm:flex-row mx-auto mb-15px sm:mb-30px px-15px "
-        }
-      >
-        <section className={"max-w-760px w-full"}>
+      <div className="flex  flex-col sm:flex-row mx-auto mb-15px sm:mb-30px px-15px ">
+        <section className="max-w-760px w-full">
           <ProductDescription
             productDescriptionRef={productDescription}
             evaluationRef={evaluation}
@@ -109,9 +105,7 @@ const Product = ({ product }) => {
             reviews={reviews}
           />
         </section>
-        <section
-          className={"sticky w-full sm:w-60% sm:ml-20px   top-100px self-start"}
-        >
+        <section className="sticky w-full sm:w-60% sm:ml-20px   top-100px self-start">
           <ShopInfo product={product} shopInfo={shopInfo} />
         </section>
       </div>

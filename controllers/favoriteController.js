@@ -15,6 +15,9 @@ const addToFavorite = async (req, res) => {
       case "shop":
         shopId = id;
         break;
+      default: {
+        console.log("hi");
+      }
     }
     const favoriteList = await Favorite.findOne({ user: _id });
     if (!favoriteList) {
@@ -51,13 +54,13 @@ const addToFavorite = async (req, res) => {
         }
 
         break;
+      default: {
+        console.log("complete");
+      }
     }
     res.status(200).json({
       favoriteList,
     });
-
-    // console.log(favoriteList)
-    // console.log('add Products ')
   } catch (error) {
     console.log(error);
   }
@@ -71,18 +74,10 @@ const getFavList = async (req, res) => {
       "favoriteProducts",
       "favoriteShops",
     ]);
-    // console.log('user',userFavList)
+    console.log("user", userFavList);
     res.status(200).json({
       userFavList,
     });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getFavShops = async (req, res) => {
-  try {
-    console.log("get Shops");
   } catch (error) {
     console.log(error);
   }

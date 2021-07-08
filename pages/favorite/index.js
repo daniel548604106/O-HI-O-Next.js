@@ -37,7 +37,7 @@ const Favorite = () => {
 
       <div className="mt-20px min-h-60vh">
         {showProducts ? (
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
             {favoriteProducts.length > 0 ? (
               favoriteProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
@@ -48,7 +48,11 @@ const Favorite = () => {
           </div>
         ) : (
           <div
-            className={favoriteShops.length > 0 ? "grid grid-cols-1 gap-4" : ""}
+            className={
+              favoriteShops.length > 0
+                ? "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5  gap-4"
+                : ""
+            }
           >
             {favoriteShops && favoriteShops.length ? (
               favoriteShops.map((shop) => (

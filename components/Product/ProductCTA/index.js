@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 import Button from "../Button";
@@ -13,42 +13,46 @@ const ProductCTA = ({ product }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
-  const favoriteProducts = useSelector(
-    (state) => state.global.favoriteProducts
+  const { favoriteProducts } = useSelector((state) => state.global);
+  const [isSaved, setSaved] = useState(
+    favoriteProducts.map((product) => product._id).includes(product._id)
   );
   const addItemToCart = () => {
     if (!isUserLoggedIn) {
-      return dispatch(openLoginModal());
+      return router.push("/login");
     }
     dispatch(addToCart(product));
   };
 
   const addToWishList = () => {
     const type = "product";
-    dispatch(addToFavorite(params.id, type));
+    setSaved(!isSaved);
+    dispatch(addToFavorite(product._id, type));
   };
 
   return (
-    <div>
-      <Button
-        onClick={() => addItemToCart()}
-        bgColor="bg-main-pink"
-        textColor="text-white"
-        title="加入購物車"
-        Icon={ShoppingCartIcon}
-      />
-
-      {favoriteProducts.find(
-        (favoriteProduct) => favoriteProduct._id === product._id
-      ) ? (
+    <div className="space-y-2">
+      <span onClick={() => addItemToCart()}>
         <Button
           bgColor="bg-main-pink"
           textColor="text-white"
-          title="Saved"
-          Icon={HeartIcon}
+          title="加入購物車"
+          Icon={ShoppingCartIcon}
         />
+      </span>
+
+      {isSaved ? (
+        <span onClick={() => addToWishList()}>
+          <Button
+            bgColor="bg-white"
+            textColor="text-main-pink"
+            borderColor="border-main-pink border"
+            title="Saved"
+            Icon={HeartIcon}
+          />
+        </span>
       ) : (
-        <span className="mt-10px hidden sm:block">
+        <span className="hidden sm:block" onClick={() => addToWishList()}>
           <Button
             bgColor="bg-black"
             textColor="text-white"

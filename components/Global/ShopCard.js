@@ -12,8 +12,8 @@ import { useRouter } from "next/router";
 const ShopCard = ({ shop }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const isUserLoggedIn = useSelector((state) => state.user.isUserLoggedIn);
-  const favoriteShops = useSelector((state) => state.global.favoriteShops);
+  const { isUserLoggedIn } = useSelector((state) => state.user);
+  const { favoriteShops } = useSelector((state) => state.global);
   const followShop = () => {
     if (isUserLoggedIn) {
       const type = "shop";
@@ -23,9 +23,7 @@ const ShopCard = ({ shop }) => {
     dispatch(openLoginModal());
   };
   const [followedFavoriteShop, setFollowedFavoriteShop] = useState(-1);
-  const toShop = (shop) => {
-    router.push(`/shops/${shop}?tab=products`);
-  };
+
   useEffect(() => {
     if (!favoriteShops) return;
     const checkFollowedShop = () => {
@@ -43,7 +41,7 @@ const ShopCard = ({ shop }) => {
         onClick={() => {
           router.push({
             pathname: "/shops/[shop]",
-            query: { shop: shop.account },
+            query: { shop: shop.account, tab: "product" },
           });
         }}
       >
@@ -92,12 +90,12 @@ const ShopCard = ({ shop }) => {
           {followedFavoriteShop === -1 ? (
             <>
               <PlusIcon className="h-5" />
-              <span className="ml-3px">Follow</span>
+              <span className="text-sm sm:text-sm ml-3px">Follow</span>
             </>
           ) : (
             <>
               <CheckIcon className="h-5" />
-              <span className="ml-3px">Following</span>
+              <span className="text-sm sm:text-sm ml-3px">Following</span>
             </>
           )}
         </button>

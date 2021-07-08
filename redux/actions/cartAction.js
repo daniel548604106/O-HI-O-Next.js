@@ -6,9 +6,10 @@ import {
   UPDATE_CART_ITEM_QTY,
   UPDATE_CHECKOUT_PROGRESS,
 } from "../types";
-export const addToCart = (item) => {
-  notify("已加入購物車");
-  return { type: ADD_CART_ITEM, payload: item };
+
+export const addToCart = (product) => {
+  console.log("已加入購物車");
+  return { type: ADD_CART_ITEM, payload: product };
 };
 
 export const removeItemFromCart = (id) => {

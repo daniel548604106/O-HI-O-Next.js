@@ -45,6 +45,17 @@ const getHotShop = async (req, res) => {
   }
 };
 
+const getAllShops = async (req, res) => {
+  try {
+    console.log("getShops");
+    const shops = await Shop.find();
+    console.log(shops);
+    res.status(200).json({ shops });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getProductsFromShop = async (req, res) => {
   try {
     console.log(req.params.account);
@@ -82,4 +93,5 @@ module.exports = {
   getHotShop,
   getProductsFromShop,
   getShopInfo,
+  getAllShops,
 };

@@ -41,6 +41,7 @@ export const closeSideMenu = () => {
 export const getFavList = () => async (dispatch) => {
   try {
     const { data } = await apiGetFavList();
+    console.log("redux, favlist", data);
     dispatch({ type: GET_FAVORITE_LIST, payload: data.userFavList });
   } catch (error) {
     console.log(error);
@@ -49,7 +50,7 @@ export const getFavList = () => async (dispatch) => {
 
 export const addToFavorite = (id, type) => async (dispatch) => {
   try {
-    dispatch({ type: ADD_TO_FAVORITE });
+    // dispatch({ type: ADD_TO_FAVORITE });
     const token = Cookie.get("token");
     await apiAddToFavorite(id, token, type);
     dispatch(getFavList(token));
